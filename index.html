@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Pratik Cholkhane portfolio | v11.8 responsive : cross-device layout pass (phone/tablet/desktop) — fluid clamp() spacing, 100vh->svh/dvh (fixes iOS viewport jump), <=720px de-pins the Path career dolly into a static single-column stack of the same cards + reveals detail without hover, hides inline nav-links <=600px (command palette remains), >=44px touch targets, and a --vh var + orientationchange->resize so hero/cosmos/star-chart/arch/cursor canvases recompute on rotate. Content/behavior/colors unchanged. | v11.7 : refined hero headline ("operational intelligence" positioning, dropped "heavy industry"); expanded the UMBC Path entry with BI-analyst detail (Tableau, SSRS/REX->Tableau modernization, LOD/parameter/blend logic, SQL Server + Redshift data validation, university systems, end-to-end ticket ownership) + DoIT/assistantship context. | v11.6 : expanded the Yard Digital Twin case study with a productionization story (Taking it live: hosting behind Welspun SSO, a persistence/memory layer, scheduled live-data refresh, Azure App Service deploy + single-tenant Entra ID; plus the upstream source-vs-system-of-record data-fork) and added deployment tech tags. | v11.5 : enlarged the star pointer slightly (glow 26->33, spikes 22->28, core 2.0->2.7); removed the cosmos asteroid/meteoroid belt (the chunky low-poly rocks that read as unrealistic) + its per-frame updates and now-unused noise helpers; near-star cursor-gravity, lens flares, comet click, Jupiter, galaxy all intact. | v11.4 star-pointer : custom cursor replaced by a single-canvas interstellar star pointer (eased core+glow+diffraction spikes matching the cosmos/constellation language, speed-scaled warm->cool comet trail, hover grows/intensifies over interactive targets, click/tap twinkle burst). Works on touch (appears on touchstart, follows, fades after touchend); overlay is pointer-events:none, passive touch, one rAF. Old .cur-ring/.cur-dot + .cursor-light retired; OS cursor hidden on fine pointers (inputs keep text). Reduced-motion = static star, no trail. | v11.3 arch-blend : System Architecture section dissolved into the shared cosmos — .arch-stage panel made transparent w/ a hairline border, the #archCanvas faux-sky (own starfield + nebula tint) removed so the fixed #cosmos shows through, soft dark halos added behind node labels + legend for legibility. Glows still use lighter compositing then reset; all graph behavior unchanged. | v11.2 systems-starmap : "Systems in Production" rebuilt as a navigable 2D-canvas constellation (six hand-placed stars w/ glow halos + twinkle + live-anchor spikes, faint constellation lines that light on hover, backdrop starfield, glass "stellar dossier" on hover/focus, click/Enter opens the case study via __morphFrom/__openCase, keyboard + vrail-dot + sr-only access). Dolly/meteorite treatment removed for #work; Path/arch/hero/modal untouched. | v11.1 starmap : architecture graph reskinned as an interstellar constellation chart (layered stars w/ glow halos + twinkle, diffraction spikes on in-production anchors, faint constellation lines, soft traveling light-pulses, backdrop starfield, drifting nebula tint replacing the scan sweep, near-black panel) — all behaviors preserved. | v11.0 cosmos-real : photographic pass — ACES+sRGB tone mapping, white-weighted desaturated stellar palette + heavier size-skew, reduced/slowed twinkle, spikes only on brightest stars; cut additive glow (neb/galaxy/core), tight nucleus; markedly slower rotations/drift; rarer/quicker meteors; filamentary multi-layer muted nebulae; tighter higher-contrast galaxy; finer Jupiter banding + limb darkening + near-black night side. Asteroid belt, flares, comet click, cursor-gravity intact. -->
+<!-- Pratik Cholkhane portfolio | v12.5 orbit-cosmos : made the fixed cosmos background interactive like the hero scene — drag empty background to orbit the camera around the look-point (Jupiter revolves across the view; the starfield/galaxy re-angle), with a little release-inertia; clamped yaw +/-1.25rad, pitch +/-0.5rad. Zoom is done via field-of-view (so the camera never flies into Jupiter): pinch on touch, Alt/Cmd + wheel on desktop, and page-scroll still gently zooms/dollies in. Drag is hooked on window and only starts over empty background (never over links/cards/buttons/canvases/panels), so every click, scroll, and the star cursor keep working; text-select suppressed only mid-drag. Jupiter/galaxy self-rotation, comet, flares, hover labels unchanged. | v12.4 comet-smooth : the pointer tail now curves smoothly instead of showing straight facets on tight motion (spirals/loops). The eased-head path is resampled with a Catmull-Rom spline into a dense centerline (6 subdivisions/segment) before the tapered glow+core ribbon is filled, so the streak follows a true curve with no polygonal edges. Head size, taper, colours, click sparkle burst, hover, touch, reduced-motion all unchanged. | v12.3 comet-pointer-fix : eliminated the beading/dots in the pointer tail by replacing the per-segment round-capped strokes (whose caps poked out where segment widths changed) with a single filled tapered ribbon per pass (glow + core), built from perpendicular offsets along the eased-head path with a head->tail alpha gradient — fully continuous, no caps. Also enlarged the cursor slightly: head glow 33->40, diffraction spikes 26->31, nucleus 2.7->3.3, tail a touch wider. All behavior (click sparkle burst, hover-grow, touch, reduced-motion, magnetic nav pull) unchanged. | v12.2 comet-pointer : reworked the star pointer into a smooth continuous shooting star. Replaced the speed-gated scatter-particle trail (0 dots when slow, up to 3 splayed dots when fast, so it read as broken/choppy in motion) with a tapered additive comet tail drawn as a continuous stroke along its recent eased path (26-frame history; warm-white head to cool-blue tail; soft-glow pass + bright-core pass; tail retracts smoothly on stop). Head tracks more responsively (ease .2 to .35), smears slightly along its velocity, and its diffraction spikes fade as it accelerates; click/tap sparkle burst, hover-grow, touch, and reduced-motion (static star, no trail) all preserved. Single canvas, one rAF. | v12.1 stack-below-about : moved the Stack & Tooling / Certifications card out of the About right-hand grid column to a full-width block directly below the About paragraphs, left-aligned (About text now a single readable left column, max-width 700px; card matches). It keeps its existing `.reveal` class, so it fades/rises/unblurs on scroll with the exact same staggered transition as the System Architecture stage. Layout-only; content/animation/behavior unchanged. | v12.0 star-ignition boot : replaced the terminal boot screen (log lines / #bootLog box / segmented #bootBar) with a cinematic 2D-canvas STAR IGNITION — a faint central point that brightens, grows a soft radial glow, shimmers, and extends 4-point diffraction spikes as load progresses (star charge = progress), then a gentle bloom flash dissolves to the hero. Same wiring preserved: finish() still adds `done` to #boot + unlocks scroll; click/tap skips to ignition; ~4200ms safety timeout; prefers-reduced-motion shows a static star then finishes. Single 2D canvas, one rAF cancelled on finish; no Three.js/WebGL in the boot; the done-class handoff to the headline decode is untouched. | v11.8 responsive : cross-device layout pass (phone/tablet/desktop) — fluid clamp() spacing, 100vh->svh/dvh (fixes iOS viewport jump), <=720px de-pins the Path career dolly into a static single-column stack of the same cards + reveals detail without hover, hides inline nav-links <=600px (command palette remains), >=44px touch targets, and a --vh var + orientationchange->resize so hero/cosmos/star-chart/arch/cursor canvases recompute on rotate. Content/behavior/colors unchanged. | v11.7 : refined hero headline ("operational intelligence" positioning, dropped "heavy industry"); expanded the UMBC Path entry with BI-analyst detail (Tableau, SSRS/REX->Tableau modernization, LOD/parameter/blend logic, SQL Server + Redshift data validation, university systems, end-to-end ticket ownership) + DoIT/assistantship context. | v11.6 : expanded the Yard Digital Twin case study with a productionization story (Taking it live: hosting behind Welspun SSO, a persistence/memory layer, scheduled live-data refresh, Azure App Service deploy + single-tenant Entra ID; plus the upstream source-vs-system-of-record data-fork) and added deployment tech tags. | v11.5 : enlarged the star pointer slightly (glow 26->33, spikes 22->28, core 2.0->2.7); removed the cosmos asteroid/meteoroid belt (the chunky low-poly rocks that read as unrealistic) + its per-frame updates and now-unused noise helpers; near-star cursor-gravity, lens flares, comet click, Jupiter, galaxy all intact. | v11.4 star-pointer : custom cursor replaced by a single-canvas interstellar star pointer (eased core+glow+diffraction spikes matching the cosmos/constellation language, speed-scaled warm->cool comet trail, hover grows/intensifies over interactive targets, click/tap twinkle burst). Works on touch (appears on touchstart, follows, fades after touchend); overlay is pointer-events:none, passive touch, one rAF. Old .cur-ring/.cur-dot + .cursor-light retired; OS cursor hidden on fine pointers (inputs keep text). Reduced-motion = static star, no trail. | v11.3 arch-blend : System Architecture section dissolved into the shared cosmos — .arch-stage panel made transparent w/ a hairline border, the #archCanvas faux-sky (own starfield + nebula tint) removed so the fixed #cosmos shows through, soft dark halos added behind node labels + legend for legibility. Glows still use lighter compositing then reset; all graph behavior unchanged. | v11.2 systems-starmap : "Systems in Production" rebuilt as a navigable 2D-canvas constellation (six hand-placed stars w/ glow halos + twinkle + live-anchor spikes, faint constellation lines that light on hover, backdrop starfield, glass "stellar dossier" on hover/focus, click/Enter opens the case study via __morphFrom/__openCase, keyboard + vrail-dot + sr-only access). Dolly/meteorite treatment removed for #work; Path/arch/hero/modal untouched. | v11.1 starmap : architecture graph reskinned as an interstellar constellation chart (layered stars w/ glow halos + twinkle, diffraction spikes on in-production anchors, faint constellation lines, soft traveling light-pulses, backdrop starfield, drifting nebula tint replacing the scan sweep, near-black panel) — all behaviors preserved. | v11.0 cosmos-real : photographic pass — ACES+sRGB tone mapping, white-weighted desaturated stellar palette + heavier size-skew, reduced/slowed twinkle, spikes only on brightest stars; cut additive glow (neb/galaxy/core), tight nucleus; markedly slower rotations/drift; rarer/quicker meteors; filamentary multi-layer muted nebulae; tighter higher-contrast galaxy; finer Jupiter banding + limb darkening + near-black night side. Asteroid belt, flares, comet click, cursor-gravity intact. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -90,10 +90,10 @@
   .sec-title{font-family:var(--display);font-weight:600;font-size:clamp(1.7rem,3.6vw,2.5rem);letter-spacing:-.02em}
   .sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--line-strong),transparent);align-self:center;margin-left:8px}
 
-  .about-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:48px;align-items:start}
+  .about-grid{display:block;max-width:700px}
   .about-grid p{font-size:1.1rem;color:#c3c9d6;margin-bottom:18px}
   .about-grid p strong{color:var(--text);font-weight:600}
-  .stack-card{border:1px solid var(--line);border-radius:16px;background:var(--surface);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);padding:26px}
+  .stack-card{border:1px solid var(--line);border-radius:16px;background:var(--surface);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);padding:26px;max-width:700px;margin-top:34px}
   .stack-card h3{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
   .chips{display:flex;flex-wrap:wrap;gap:9px}
   .chip{font-family:var(--mono);font-size:12px;color:#b9c0cf;border:1px solid var(--line-strong);border-radius:8px;padding:6px 11px;background:rgba(255,255,255,.02);transition:border-color .25s,color .25s,background .25s,transform .25s}
@@ -325,16 +325,11 @@
   @media (max-width:720px){.statband-row{gap:46px}.bigstat{flex-basis:100%}}
 
   /* boot sequence */
-  #boot{position:fixed;inset:0;z-index:300;background:#05060a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .8s ease,transform .8s ease,visibility .8s}
+  #boot{position:fixed;inset:0;z-index:300;background:#05060a;overflow:hidden;transition:opacity .8s ease,transform .8s ease,visibility .8s}
   #boot.done{opacity:0;visibility:hidden;transform:scale(1.05)}
-  .boot-mono{font-family:var(--mono);font-size:13px;letter-spacing:.4em;text-transform:uppercase;color:var(--cyan);text-indent:.4em}
-  .boot-log{font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--muted);min-height:150px;width:min(420px,84vw)}
-  .boot-log .ln{opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s}
-  .boot-log .ln.show{opacity:1;transform:none}
-  .boot-log .ok{color:var(--green)}.boot-log .ac{color:var(--cyan)}
-  .boot-bar{width:min(420px,84vw);height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
-  .boot-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--violet),var(--magenta));box-shadow:0 0 10px var(--cyan);transition:width .2s linear}
-  .boot-skip{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  #bootStar{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .boot-mono{position:absolute;top:34px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:12px;letter-spacing:.42em;text-transform:uppercase;color:rgba(184,203,236,.5);text-indent:.42em;z-index:2}
+  .boot-skip{position:absolute;bottom:26px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(160,175,205,.4);z-index:2}
 
   /* HUD chrome */
   .hud-corner{position:fixed;width:24px;height:24px;z-index:92;pointer-events:none;border:1px solid rgba(34,211,238,.35)}
@@ -457,9 +452,8 @@
 <body>
   <a href="#about" class="skip">Skip to content</a>
   <div id="boot">
+    <canvas id="bootStar"></canvas>
     <div class="boot-mono">Welspun &middot; Plant 4110</div>
-    <div class="boot-log" id="bootLog"></div>
-    <div class="boot-bar"><i id="bootBar"></i></div>
     <div class="boot-skip">click to skip</div>
   </div>
   <div class="hud-corner tl"></div><div class="hud-corner tr"></div><div class="hud-corner bl"></div><div class="hud-corner br"></div>
@@ -507,12 +501,12 @@
           <p>At Welspun's Plant 4110 in Little Rock, I'm the <strong>engine builder, not the engine operator</strong> &mdash; I build the digital infrastructure yard operations runs on: digital twins rendered from live SAP data, executive dashboards leadership trusts, and rule engines that catch what spreadsheets quietly miss.</p>
           <p>My north star is simple &mdash; <strong>honest numbers over optimistic presentation</strong>, automation as the source of truth, and human input as confirmation.</p>
         </div>
-        <div class="stack-card reveal">
-          <h3>Stack &amp; Tooling</h3>
-          <div class="chips"><span class="chip">SAP WM/MM/SD</span><span class="chip">Three.js</span><span class="chip">WebGL</span><span class="chip">Python</span><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Recharts</span><span class="chip">QGIS</span><span class="chip">ArcGIS Pro</span><span class="chip">Motive</span><span class="chip">Kronos</span><span class="chip">Node.js</span><span class="chip">Data engineering</span><span class="chip">Rule engines</span><span class="chip">LLM integration</span></div>
-          <h3 style="margin-top:24px">Certifications</h3>
-          <div class="chips"><span class="chip">PMP&reg;</span><span class="chip">CSPO&reg;</span><span class="chip">CAPM&reg;</span></div>
-        </div>
+      </div>
+      <div class="stack-card reveal">
+        <h3>Stack &amp; Tooling</h3>
+        <div class="chips"><span class="chip">SAP WM/MM/SD</span><span class="chip">Three.js</span><span class="chip">WebGL</span><span class="chip">Python</span><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Recharts</span><span class="chip">QGIS</span><span class="chip">ArcGIS Pro</span><span class="chip">Motive</span><span class="chip">Kronos</span><span class="chip">Node.js</span><span class="chip">Data engineering</span><span class="chip">Rule engines</span><span class="chip">LLM integration</span></div>
+        <h3 style="margin-top:24px">Certifications</h3>
+        <div class="chips"><span class="chip">PMP&reg;</span><span class="chip">CSPO&reg;</span><span class="chip">CAPM&reg;</span></div>
       </div>
     </section>
 
@@ -1631,23 +1625,62 @@
 
     // boot sequence
     (function(){
-      const boot=document.getElementById('boot'),log=document.getElementById('bootLog'),bar=document.getElementById('bootBar');
+      // STAR IGNITION boot — visual swap only; finish contract (add `done` to #boot + unlock scroll) unchanged.
+      const boot=document.getElementById('boot');
       if(!boot)return;
-      const lines=['<span class="ac">&#9656;</span> initializing digital twin&hellip;','<span class="ac">&#9656;</span> linking SAP &middot; warehouse 411&hellip;','<span class="ac">&#9656;</span> calibrating telemetry &middot; 34 assets&hellip;','<span class="ac">&#9656;</span> render pipeline online','<span class="ok">&#10003; system nominal</span>'];
-      let done=false;
-      function finish(){if(done)return;done=true;boot.classList.add('done');document.body.style.overflow='';}
-      boot.addEventListener('click',finish);
-      if(reduce){finish();return;}
+      const cv=document.getElementById('bootStar');
+      const ctx=cv?cv.getContext('2d'):null;
+      let done=false,raf=0,igniting=false,igStart=0,t0=0;
+      const CHARGE=2600,IGNITE=660;
+      function finish(){if(done)return;done=true;if(raf)cancelAnimationFrame(raf);boot.classList.add('done');document.body.style.overflow='';}
+      boot.addEventListener('click',function(){if(done)return;if(!igniting){igniting=true;igStart=performance.now();}else finish();});
+      function spikes(cx,cy,len,a,w){
+        const ax=[[0,-1],[0,1],[-1,0],[1,0]];
+        for(let k=0;k<4;k++){var dx=ax[k][0],dy=ax[k][1],ex=cx+dx*len,ey=cy+dy*len,gr=ctx.createLinearGradient(cx,cy,ex,ey);
+          gr.addColorStop(0,'rgba(255,255,255,'+(a*0.9).toFixed(3)+')');gr.addColorStop(0.5,'rgba(214,228,255,'+(a*0.33).toFixed(3)+')');gr.addColorStop(1,'rgba(200,220,255,0)');
+          ctx.strokeStyle=gr;ctx.lineWidth=Math.max(0.6,w);ctx.lineCap='round';ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(ex,ey);ctx.stroke();}
+        const dg=[[0.7,-0.7],[-0.7,-0.7],[0.7,0.7],[-0.7,0.7]],dl=len*0.4;
+        for(let k=0;k<4;k++){var dx=dg[k][0],dy=dg[k][1],ex=cx+dx*dl,ey=cy+dy*dl,gr=ctx.createLinearGradient(cx,cy,ex,ey);
+          gr.addColorStop(0,'rgba(255,255,255,'+(a*0.4).toFixed(3)+')');gr.addColorStop(1,'rgba(200,220,255,0)');
+          ctx.strokeStyle=gr;ctx.lineWidth=0.7;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(ex,ey);ctx.stroke();}
+      }
+      function paint(now){
+        const W=innerWidth,H=innerHeight,cx=W/2,cy=H/2,md=Math.min(W,H);
+        let p=Math.min(1,(now-t0)/CHARGE);
+        const b=p*p;
+        const sh=1+0.05*Math.sin(now*0.006)*p+0.03*Math.sin(now*0.013+1.3)*p;
+        let glowR=8+b*md*0.20,coreR=1.0+p*2.6,sp=Math.pow(p,2.2)*md*0.46*(0.5+0.5*p),coreA=0.15+0.85*b,flash=0;
+        if(igniting){var e=Math.min(1,(now-igStart)/IGNITE);flash=Math.sin(e*Math.PI);p=1;glowR+=flash*md*0.28;coreR+=flash*8;coreA=1;sp=md*0.46+flash*md*0.12;}
+        ctx.globalCompositeOperation='source-over';ctx.fillStyle='#04050a';ctx.fillRect(0,0,W,H);
+        ctx.globalCompositeOperation='lighter';
+        var g=ctx.createRadialGradient(cx,cy,0,cx,cy,Math.max(1,glowR*sh));
+        g.addColorStop(0,'rgba(228,237,255,'+(0.5*b+0.5*flash).toFixed(3)+')');
+        g.addColorStop(0.4,'rgba(150,180,236,'+(0.22*b+0.3*flash).toFixed(3)+')');
+        g.addColorStop(1,'rgba(120,150,220,0)');
+        ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,Math.max(1,glowR*sh),0,7);ctx.fill();
+        if(sp>2)spikes(cx,cy,sp*sh,(0.5*b+0.5*flash),1.0+coreR*0.14);
+        var cg=ctx.createRadialGradient(cx,cy,0,cx,cy,Math.max(1,coreR*2.2));
+        cg.addColorStop(0,'rgba(255,255,255,'+coreA.toFixed(3)+')');
+        cg.addColorStop(0.6,'rgba(240,246,255,'+(coreA*0.7).toFixed(3)+')');
+        cg.addColorStop(1,'rgba(240,246,255,0)');
+        ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,Math.max(1,coreR*2.2),0,7);ctx.fill();
+        ctx.beginPath();ctx.arc(cx,cy,Math.max(0.6,coreR*0.6),0,7);ctx.fillStyle='rgba(255,255,255,'+Math.min(1,coreA+0.1).toFixed(3)+')';ctx.fill();
+        if(flash>0){ctx.globalCompositeOperation='source-over';ctx.fillStyle='rgba(255,255,255,'+(flash*0.42).toFixed(3)+')';ctx.fillRect(0,0,W,H);}
+        ctx.globalCompositeOperation='source-over';
+        var lw=Math.min(W*0.5,360),lx=(W-lw)/2,ly=H-64;
+        ctx.fillStyle='rgba(255,255,255,0.07)';ctx.fillRect(lx,ly,lw,1);
+        ctx.fillStyle='rgba(214,228,255,0.5)';ctx.fillRect(lx,ly,lw*p,1);
+        if(igniting){if((now-igStart)>=IGNITE){finish();return;}}
+        else if(p>=1){igniting=true;igStart=now;}
+        raf=requestAnimationFrame(paint);
+      }
+      function resize(){if(!cv)return;var d=Math.min(window.devicePixelRatio||1,2);cv.width=Math.floor(innerWidth*d);cv.height=Math.floor(innerHeight*d);cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';ctx.setTransform(d,0,0,d,0,0);}
+      function statik(){var W=innerWidth,H=innerHeight,cx=W/2,cy=H/2,md=Math.min(W,H);ctx.globalCompositeOperation='source-over';ctx.fillStyle='#04050a';ctx.fillRect(0,0,W,H);ctx.globalCompositeOperation='lighter';var g=ctx.createRadialGradient(cx,cy,0,cx,cy,md*0.16);g.addColorStop(0,'rgba(255,255,255,0.92)');g.addColorStop(0.4,'rgba(160,190,240,0.34)');g.addColorStop(1,'rgba(140,170,230,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,md*0.16,0,7);ctx.fill();spikes(cx,cy,md*0.34,0.8,2);ctx.globalCompositeOperation='source-over';}
+      if(reduce||!ctx){if(ctx){resize();statik();}finish();return;}
+      resize();window.addEventListener('resize',resize);
       document.body.style.overflow='hidden';
-      let i=0;
-      bar.style.width='6%';
-      (function nextLine(){
-        if(i>=lines.length){bar.style.width='100%';setTimeout(finish,520);return;}
-        const d=document.createElement('div');d.className='ln';d.innerHTML=lines[i];log.appendChild(d);
-        requestAnimationFrame(()=>d.classList.add('show'));
-        bar.style.width=(12+((i+1)/lines.length)*82).toFixed(0)+'%';
-        i++;setTimeout(nextLine,300);
-      })();
+      t0=performance.now();
+      raf=requestAnimationFrame(paint);
       setTimeout(finish,4200); // safety
     })();
 
@@ -1702,19 +1735,19 @@
 
       let tx=W/2,ty=H/2,sx=tx,sy=ty,psx=sx,psy=sy;
       let vis=0,visT=0,heat=0,heatT=0,flash=0,primary=null,fadeTO=null,everMoved=false;
-      const P=[],MAXP=reduceP?0:60;
+      const P=[],MAXP=reduceP?0:24;                    // click/tap sparkle burst only
+      const T=[],NT=reduceP?0:26;                      // eased-head path history -> smooth continuous comet tail
       const HOT='a,button,.card,.tile-c,.chip,.vdot,.cmdk-item,.sim-btn,.sd-open,.ai-fab,.cmdk-hint,summary,.tl-head,#archCanvas,#skyCanvas';
 
-      function emit(x,y,dx,dy,burst){
-        if(reduceP)return; let n=burst?14:Math.min(3,(Math.hypot(dx,dy)*0.16)|0);
-        for(let i=0;i<n;i++){ if(P.length>=MAXP)P.shift();
-          const a=Math.random()*6.283,sp=burst?(0.6+Math.random()*1.7):(Math.random()*0.5);
-          P.push({x:x+(Math.random()-0.5)*4,y:y+(Math.random()-0.5)*4,vx:-dx*0.08+Math.cos(a)*sp,vy:-dy*0.08+Math.sin(a)*sp,life:1,dk:0.028+Math.random()*0.035,sz:0.8+Math.random()*1.8});}
+      function emit(x,y){                               // sparkle burst on click / tap
+        if(reduceP)return; for(let i=0;i<14;i++){ if(P.length>=MAXP)P.shift();
+          const a=Math.random()*6.283,sp=0.6+Math.random()*1.9;
+          P.push({x:x+(Math.random()-0.5)*4,y:y+(Math.random()-0.5)*4,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,dk:0.03+Math.random()*0.04,sz:0.8+Math.random()*1.8});}
       }
 
-      addEventListener('pointermove',function(e){tx=e.clientX;ty=e.clientY;visT=1;if(!everMoved){everMoved=true;sx=tx;sy=ty;psx=sx;psy=sy;}},{passive:true});
-      addEventListener('pointerdown',function(e){tx=e.clientX;ty=e.clientY;if(e.pointerType==='touch'){if(primary==null)primary=e.pointerId;sx=tx;sy=ty;psx=sx;psy=sy;everMoved=true;}visT=1;flash=reduceP?0:1;emit(tx,ty,0,0,true);},{passive:true});
-      function endTouch(e){if(e.pointerType==='touch'&&(e.pointerId===primary||primary==null)){primary=null;flash=reduceP?0:Math.max(flash,0.9);emit(tx,ty,0,0,true);clearTimeout(fadeTO);fadeTO=setTimeout(function(){visT=0;},160);}}
+      addEventListener('pointermove',function(e){tx=e.clientX;ty=e.clientY;visT=1;if(!everMoved){everMoved=true;sx=tx;sy=ty;psx=sx;psy=sy;T.length=0;}},{passive:true});
+      addEventListener('pointerdown',function(e){tx=e.clientX;ty=e.clientY;if(e.pointerType==='touch'){if(primary==null)primary=e.pointerId;sx=tx;sy=ty;psx=sx;psy=sy;everMoved=true;T.length=0;}visT=1;flash=reduceP?0:1;emit(tx,ty);},{passive:true});
+      function endTouch(e){if(e.pointerType==='touch'&&(e.pointerId===primary||primary==null)){primary=null;flash=reduceP?0:Math.max(flash,0.9);emit(tx,ty);clearTimeout(fadeTO);fadeTO=setTimeout(function(){visT=0;},160);}}
       addEventListener('pointerup',endTouch,{passive:true});
       addEventListener('pointercancel',endTouch,{passive:true});
       addEventListener('pointerover',function(e){if(e.target&&e.target.closest&&e.target.closest(HOT))heatT=1;},true);
@@ -1722,36 +1755,73 @@
       document.addEventListener('mouseleave',function(){if(fineP)visT=0;});
       document.addEventListener('mouseenter',function(){if(fineP)visT=1;});
 
-      function star(x,y,sc,ga){
+      // comet head: soft glow smeared along motion + diffraction spikes (fade as it speeds up) + crisp nucleus
+      function head(x,y,sc,ga,ang,stretch,spk){
         const R=210,G=224,B=255;
-        let g=ctx.createRadialGradient(x,y,0,x,y,33*sc);
+        ctx.save();ctx.translate(x,y);ctx.rotate(ang);ctx.scale(stretch,1);
+        const g=ctx.createRadialGradient(0,0,0,0,0,40*sc);
         g.addColorStop(0,'rgba(255,255,255,'+(0.5*ga).toFixed(3)+')');
         g.addColorStop(0.3,'rgba('+R+','+G+','+B+','+(0.32*ga).toFixed(3)+')');
         g.addColorStop(1,'rgba('+R+','+G+','+B+',0)');
-        ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,33*sc,0,7);ctx.fill();
-        if(!reduceP){const sl=28*sc*(1+heat*0.5),sa=0.5*ga;[[1,0],[0,1]].forEach(function(d){const ux=d[0],uy=d[1],lg=ctx.createLinearGradient(x-ux*sl,y-uy*sl,x+ux*sl,y+uy*sl);lg.addColorStop(0,'rgba('+R+','+G+','+B+',0)');lg.addColorStop(0.5,'rgba(255,255,255,'+sa.toFixed(3)+')');lg.addColorStop(1,'rgba('+R+','+G+','+B+',0)');ctx.strokeStyle=lg;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(x-ux*sl,y-uy*sl);ctx.lineTo(x+ux*sl,y+uy*sl);ctx.stroke();});}
+        ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,40*sc,0,7);ctx.fill();
+        ctx.restore();
+        if(!reduceP&&spk>0.02){const sl=31*sc*(1+heat*0.5),sa=0.5*ga*spk;[[1,0],[0,1]].forEach(function(d){const ux=d[0],uy=d[1],lg=ctx.createLinearGradient(x-ux*sl,y-uy*sl,x+ux*sl,y+uy*sl);lg.addColorStop(0,'rgba('+R+','+G+','+B+',0)');lg.addColorStop(0.5,'rgba(255,255,255,'+sa.toFixed(3)+')');lg.addColorStop(1,'rgba('+R+','+G+','+B+',0)');ctx.strokeStyle=lg;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(x-ux*sl,y-uy*sl);ctx.lineTo(x+ux*sl,y+uy*sl);ctx.stroke();});}
       }
 
       let raf;
       function frame(){
         raf=requestAnimationFrame(frame);
         if(document.hidden)return;
-        sx+=(tx-sx)*0.2;sy+=(ty-sy)*0.2;                 // weighty easing (slightly trailing)
-        const dx=sx-psx,dy=sy-psy;psx=sx;psy=sy;
+        sx+=(tx-sx)*0.35;sy+=(ty-sy)*0.35;               // responsive head; the streak comes from its recent path
+        const vx=sx-psx,vy=sy-psy;psx=sx;psy=sy;
+        const speed=Math.hypot(vx,vy),ang=Math.atan2(vy,vx);
         vis+=(visT-vis)*0.14;heat+=(heatT-heat)*0.12;flash*=0.86;
         ctx.clearRect(0,0,W,H);
-        if(vis<0.01)return;
-        if(!reduceP){
-          emit(sx,sy,dx,dy,false);
+        if(vis<0.01){T.length=0;return;}
+        if(NT){T.unshift({x:sx,y:sy});if(T.length>NT)T.pop();}
+        // ---- smooth continuous comet tail: Catmull-Rom-resampled path -> filled tapered ribbon (curved, no facets, no caps) ----
+        if(!reduceP&&T.length>2){
+          const N=T.length,SEG=6,D=[];                                      // resample the eased-head path into a dense smooth centerline
+          for(let i=0;i<N-1;i++){const p0=T[i>0?i-1:0],p1=T[i],p2=T[i+1],p3=T[i<N-2?i+2:N-1];
+            for(let j=0;j<SEG;j++){const t=j/SEG,t2=t*t,t3=t2*t;
+              D.push(0.5*((2*p1.x)+(-p0.x+p2.x)*t+(2*p0.x-5*p1.x+4*p2.x-p3.x)*t2+(-p0.x+3*p1.x-3*p2.x+p3.x)*t3),
+                     0.5*((2*p1.y)+(-p0.y+p2.y)*t+(2*p0.y-5*p1.y+4*p2.y-p3.y)*t2+(-p0.y+3*p1.y-3*p2.y+p3.y)*t3));}}
+          D.push(T[N-1].x,T[N-1].y);
+          const M=D.length>>1;
+          if(M>2){
+            ctx.save();ctx.globalCompositeOperation='lighter';
+            const passes=[[10.5+heat*3.6,0.16,0],[3.6+heat*1.6,0.5,1]];     // [head half-width, alpha, whiteMix] : soft glow, then bright core
+            for(let q=0;q<2;q++){const bw=passes[q][0],ba=passes[q][1],wm=passes[q][2];
+              const Lx=[],Ly=[],Rx=[],Ry=[];
+              for(let i=0;i<M;i++){const f=i/(M-1),tp=1-f,ia=i>0?i-1:0,ib=i<M-1?i+1:M-1;
+                let dx=D[ia*2]-D[ib*2],dy=D[ia*2+1]-D[ib*2+1];const dl=Math.hypot(dx,dy)||1;dx/=dl;dy/=dl;
+                const nx=-dy,ny=dx,hw=Math.max(0.35,bw*tp*tp);              // taper: wide at head -> point at tail
+                Lx[i]=D[i*2]+nx*hw;Ly[i]=D[i*2+1]+ny*hw;Rx[i]=D[i*2]-nx*hw;Ry[i]=D[i*2+1]-ny*hw;}
+              ctx.beginPath();ctx.moveTo(Lx[0],Ly[0]);
+              for(let i=1;i<M;i++)ctx.lineTo(Lx[i],Ly[i]);
+              for(let i=M-1;i>=0;i--)ctx.lineTo(Rx[i],Ry[i]);
+              ctx.closePath();
+              let hr=255,hg=240,hb=214,tr=150,tg=180,tb=255;if(wm){hr=255;hg=255;hb=255;tr=210;tg=225;tb=255;}
+              const g=ctx.createLinearGradient(D[0],D[1],D[(M-1)*2],D[(M-1)*2+1]);
+              g.addColorStop(0,'rgba('+hr+','+hg+','+hb+','+(ba*vis).toFixed(3)+')');
+              g.addColorStop(1,'rgba('+tr+','+tg+','+tb+',0)');
+              ctx.fillStyle=g;ctx.fill();}
+            ctx.restore();
+          }
+        }
+        // ---- click / tap sparkle burst ----
+        if(!reduceP&&P.length){
           ctx.save();ctx.globalCompositeOperation='lighter';
-          for(let i=P.length-1;i>=0;i--){const pt=P[i];pt.x+=pt.vx;pt.y+=pt.vy;pt.vx*=0.94;pt.vy*=0.94;pt.life-=pt.dk;if(pt.life<=0){P.splice(i,1);continue;}
-            const tp=1-pt.life,cr=(255+(150-255)*tp)|0,cg=(205+(190-205)*tp)|0,cb=(150+(255-150)*tp)|0,al=pt.life*0.55*vis,rr=pt.sz*3*(0.6+pt.life*0.7);
+          for(let i=P.length-1;i>=0;i--){const pt=P[i];pt.x+=pt.vx;pt.y+=pt.vy;pt.vx*=0.93;pt.vy*=0.93;pt.life-=pt.dk;if(pt.life<=0){P.splice(i,1);continue;}
+            const tp=1-pt.life,cr=(255+(150-255)*tp)|0,cg=(240+(190-240)*tp)|0,cb=(214+(255-214)*tp)|0,al=pt.life*0.55*vis,rr=pt.sz*3*(0.6+pt.life*0.7);
             const g=ctx.createRadialGradient(pt.x,pt.y,0,pt.x,pt.y,rr);g.addColorStop(0,'rgba('+cr+','+cg+','+cb+','+al.toFixed(3)+')');g.addColorStop(1,'rgba('+cr+','+cg+','+cb+',0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(pt.x,pt.y,rr,0,7);ctx.fill();}
           ctx.restore();
         }
+        // ---- comet head + crisp nucleus ----
         const sc=1+heat*0.55+flash*0.5, ga=vis*(0.8+heat*0.5+flash*0.6);
-        ctx.save();ctx.globalCompositeOperation='lighter';star(sx,sy,sc,ga);ctx.restore();
-        const cr2=2.7+heat*1.3+flash*1.6;
+        const stretch=Math.min(2.4,1+speed*0.05), spk=1/(1+speed*0.16);
+        ctx.save();ctx.globalCompositeOperation='lighter';head(sx,sy,sc,ga,ang,stretch,spk);ctx.restore();
+        const cr2=3.3+heat*1.5+flash*1.8;
         ctx.beginPath();ctx.arc(sx,sy,cr2,0,7);ctx.fillStyle='rgba(255,255,255,'+Math.min(1,vis*(0.9+flash)).toFixed(3)+')';ctx.fill();
       }
       frame();
@@ -1999,6 +2069,34 @@
     resize();addEventListener('resize',resize);
     let tmx=0,tmy=0,mx=0,my=0;
     addEventListener('pointermove',e=>{tmx=(e.clientX/innerWidth-0.5);tmy=(e.clientY/innerHeight-0.5);},{passive:true});
+    // ---- interactive sky: drag empty background to orbit (Jupiter revolves, stars re-angle); pinch or Alt/Cmd+scroll to zoom (FOV, clip-safe); page-scroll still dollies in ----
+    const clampC=(v,a,b)=>v<a?a:(v>b?b:v);
+    const F={x:60,y:0,z:-200},baseYaw=-0.079,baseDist=762;
+    let yaw=baseYaw,pitch=0,yawV=0,pitchV=0,zoom=1,zoomT=1,dragging=false,lastX=0,lastY=0,pinchD=0,pinchCX=0,pinchCY=0;
+    const NODRAG='a,button,input,textarea,select,summary,label,canvas,svg,.card,.tile-c,.chip,.stack-card,.cmdk,.cmdk-panel,.ai-panel,.ai-fab,.cs-modal,.cs-panel,.arch-stage,.arch-tip,.sky-dossier,.vdot';
+    const ptrs=new Map();
+    function touches(){const a=[];ptrs.forEach(v=>{if(v.t==='touch')a.push(v);});return a;}
+    addEventListener('pointerdown',function(e){
+      ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY,t:e.pointerType});
+      if(e.pointerType==='touch'){dragging=false;const tl=touches();if(tl.length>=2){pinchD=Math.hypot(tl[0].x-tl[1].x,tl[0].y-tl[1].y);pinchCX=(tl[0].x+tl[1].x)/2;pinchCY=(tl[0].y+tl[1].y)/2;}return;}
+      if(e.target&&e.target.closest&&e.target.closest(NODRAG))return;
+      dragging=true;lastX=e.clientX;lastY=e.clientY;yawV=0;pitchV=0;document.body.style.userSelect='none';
+    },{passive:true});
+    addEventListener('pointermove',function(e){
+      if(ptrs.has(e.pointerId))ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY,t:e.pointerType});
+      const tl=touches();
+      if(tl.length>=2){const d=Math.hypot(tl[0].x-tl[1].x,tl[0].y-tl[1].y),cx=(tl[0].x+tl[1].x)/2,cy=(tl[0].y+tl[1].y)/2;
+        if(pinchD){zoomT=clampC(zoomT*(d/pinchD),0.6,2.5);yaw+=(cx-pinchCX)*0.0035;pitch=clampC(pitch-(cy-pinchCY)*0.0035,-0.5,0.5);}
+        pinchD=d;pinchCX=cx;pinchCY=cy;return;}
+      if(!dragging)return;
+      const dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;
+      yawV=dx*0.0035;pitchV=-dy*0.0035;
+    },{passive:true});
+    function orbitUp(e){ptrs.delete(e.pointerId);if(touches().length<2)pinchD=0;if(ptrs.size===0){dragging=false;document.body.style.userSelect='';}}
+    addEventListener('pointerup',orbitUp,{passive:true});
+    addEventListener('pointercancel',orbitUp,{passive:true});
+    addEventListener('blur',function(){ptrs.clear();dragging=false;pinchD=0;document.body.style.userSelect='';});
+    addEventListener('wheel',function(e){if(e.altKey||e.metaKey){e.preventDefault();zoomT=clampC(zoomT*(1-e.deltaY*0.0016),0.6,2.5);}},{passive:false});
     const anchor=document.getElementById('about');
     function fadeAmt(){const base=anchor?anchor.offsetTop:innerHeight;const start=base-innerHeight*0.75;return Math.max(0,Math.min(1,(scrollY-start)/(innerHeight*0.5)));}
     function scrollProg(){const m2=document.documentElement.scrollHeight-innerHeight;return m2>0?Math.min(1,Math.max(0,scrollY/m2)):0;}
@@ -2016,10 +2114,15 @@
       if(!reduce&&typeof EXTRA!=='undefined')EXTRA.frame(t,mx,my);
       if(typeof EXTRA!=='undefined')EXTRA.labels();
       const sp=scrollProg();
-      camera.position.x=mx*70;camera.position.y=-my*44+sp*30;
-      camera.position.z=560-sp*300;       // float closer as you scroll
+      yaw+=yawV;pitch+=pitchV;if(dragging){yawV*=0.55;pitchV*=0.55;}else{yawV*=0.92;pitchV*=0.92;}   // drag + inertia
+      const yLo=baseYaw-1.25,yHi=baseYaw+1.25;if(yaw<yLo){yaw=yLo;yawV=0;}if(yaw>yHi){yaw=yHi;yawV=0;}
+      if(pitch<-0.5){pitch=-0.5;pitchV=0;}if(pitch>0.5){pitch=0.5;pitchV=0;}
+      zoom+=(zoomT-zoom)*0.12;
+      const fov=clampC(60/zoom,24,74);if(Math.abs(camera.fov-fov)>0.01){camera.fov=fov;camera.updateProjectionMatrix();}   // zoom via FOV (camera stays clear of Jupiter)
+      const R=clampC(baseDist-sp*240,520,baseDist),eYaw=yaw+mx*0.05,ePitch=pitch-my*0.045,cpp=Math.cos(ePitch);   // orbit radius (scroll dollies in) + subtle idle parallax
+      camera.position.set(F.x+R*cpp*Math.sin(eYaw),F.y+R*Math.sin(ePitch)+sp*20,F.z+R*cpp*Math.cos(eYaw));
       starsNear.position.z=sp*130;
-      camera.lookAt(mx*30+60,sp*14,-200);  // bias toward Jupiter
+      camera.lookAt(F.x,F.y,F.z);
       renderer.render(scene,camera);
     }
     scene.traverse(function(o){if(o.material&&o.material.isSpriteMaterial&&o.material.color)o.material.color.convertSRGBToLinear();});   // sRGB color mgmt for sprite tints
