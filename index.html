@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- Pratik Cholkhane portfolio | v12.5 orbit-cosmos : made the fixed cosmos background interactive like the hero scene — drag empty background to orbit the camera around the look-point (Jupiter revolves across the view; the starfield/galaxy re-angle), with a little release-inertia; clamped yaw +/-1.25rad, pitch +/-0.5rad. Zoom is done via field-of-view (so the camera never flies into Jupiter): pinch on touch, Alt/Cmd + wheel on desktop, and page-scroll still gently zooms/dollies in. Drag is hooked on window and only starts over empty background (never over links/cards/buttons/canvases/panels), so every click, scroll, and the star cursor keep working; text-select suppressed only mid-drag. Jupiter/galaxy self-rotation, comet, flares, hover labels unchanged. | v12.4 comet-smooth : the pointer tail now curves smoothly instead of showing straight facets on tight motion (spirals/loops). The eased-head path is resampled with a Catmull-Rom spline into a dense centerline (6 subdivisions/segment) before the tapered glow+core ribbon is filled, so the streak follows a true curve with no polygonal edges. Head size, taper, colours, click sparkle burst, hover, touch, reduced-motion all unchanged. | v12.3 comet-pointer-fix : eliminated the beading/dots in the pointer tail by replacing the per-segment round-capped strokes (whose caps poked out where segment widths changed) with a single filled tapered ribbon per pass (glow + core), built from perpendicular offsets along the eased-head path with a head->tail alpha gradient — fully continuous, no caps. Also enlarged the cursor slightly: head glow 33->40, diffraction spikes 26->31, nucleus 2.7->3.3, tail a touch wider. All behavior (click sparkle burst, hover-grow, touch, reduced-motion, magnetic nav pull) unchanged. | v12.2 comet-pointer : reworked the star pointer into a smooth continuous shooting star. Replaced the speed-gated scatter-particle trail (0 dots when slow, up to 3 splayed dots when fast, so it read as broken/choppy in motion) with a tapered additive comet tail drawn as a continuous stroke along its recent eased path (26-frame history; warm-white head to cool-blue tail; soft-glow pass + bright-core pass; tail retracts smoothly on stop). Head tracks more responsively (ease .2 to .35), smears slightly along its velocity, and its diffraction spikes fade as it accelerates; click/tap sparkle burst, hover-grow, touch, and reduced-motion (static star, no trail) all preserved. Single canvas, one rAF. | v12.1 stack-below-about : moved the Stack & Tooling / Certifications card out of the About right-hand grid column to a full-width block directly below the About paragraphs, left-aligned (About text now a single readable left column, max-width 700px; card matches). It keeps its existing `.reveal` class, so it fades/rises/unblurs on scroll with the exact same staggered transition as the System Architecture stage. Layout-only; content/animation/behavior unchanged. | v12.0 star-ignition boot : replaced the terminal boot screen (log lines / #bootLog box / segmented #bootBar) with a cinematic 2D-canvas STAR IGNITION — a faint central point that brightens, grows a soft radial glow, shimmers, and extends 4-point diffraction spikes as load progresses (star charge = progress), then a gentle bloom flash dissolves to the hero. Same wiring preserved: finish() still adds `done` to #boot + unlocks scroll; click/tap skips to ignition; ~4200ms safety timeout; prefers-reduced-motion shows a static star then finishes. Single 2D canvas, one rAF cancelled on finish; no Three.js/WebGL in the boot; the done-class handoff to the headline decode is untouched. | v11.8 responsive : cross-device layout pass (phone/tablet/desktop) — fluid clamp() spacing, 100vh->svh/dvh (fixes iOS viewport jump), <=720px de-pins the Path career dolly into a static single-column stack of the same cards + reveals detail without hover, hides inline nav-links <=600px (command palette remains), >=44px touch targets, and a --vh var + orientationchange->resize so hero/cosmos/star-chart/arch/cursor canvases recompute on rotate. Content/behavior/colors unchanged. | v11.7 : refined hero headline ("operational intelligence" positioning, dropped "heavy industry"); expanded the UMBC Path entry with BI-analyst detail (Tableau, SSRS/REX->Tableau modernization, LOD/parameter/blend logic, SQL Server + Redshift data validation, university systems, end-to-end ticket ownership) + DoIT/assistantship context. | v11.6 : expanded the Yard Digital Twin case study with a productionization story (Taking it live: hosting behind Welspun SSO, a persistence/memory layer, scheduled live-data refresh, Azure App Service deploy + single-tenant Entra ID; plus the upstream source-vs-system-of-record data-fork) and added deployment tech tags. | v11.5 : enlarged the star pointer slightly (glow 26->33, spikes 22->28, core 2.0->2.7); removed the cosmos asteroid/meteoroid belt (the chunky low-poly rocks that read as unrealistic) + its per-frame updates and now-unused noise helpers; near-star cursor-gravity, lens flares, comet click, Jupiter, galaxy all intact. | v11.4 star-pointer : custom cursor replaced by a single-canvas interstellar star pointer (eased core+glow+diffraction spikes matching the cosmos/constellation language, speed-scaled warm->cool comet trail, hover grows/intensifies over interactive targets, click/tap twinkle burst). Works on touch (appears on touchstart, follows, fades after touchend); overlay is pointer-events:none, passive touch, one rAF. Old .cur-ring/.cur-dot + .cursor-light retired; OS cursor hidden on fine pointers (inputs keep text). Reduced-motion = static star, no trail. | v11.3 arch-blend : System Architecture section dissolved into the shared cosmos — .arch-stage panel made transparent w/ a hairline border, the #archCanvas faux-sky (own starfield + nebula tint) removed so the fixed #cosmos shows through, soft dark halos added behind node labels + legend for legibility. Glows still use lighter compositing then reset; all graph behavior unchanged. | v11.2 systems-starmap : "Systems in Production" rebuilt as a navigable 2D-canvas constellation (six hand-placed stars w/ glow halos + twinkle + live-anchor spikes, faint constellation lines that light on hover, backdrop starfield, glass "stellar dossier" on hover/focus, click/Enter opens the case study via __morphFrom/__openCase, keyboard + vrail-dot + sr-only access). Dolly/meteorite treatment removed for #work; Path/arch/hero/modal untouched. | v11.1 starmap : architecture graph reskinned as an interstellar constellation chart (layered stars w/ glow halos + twinkle, diffraction spikes on in-production anchors, faint constellation lines, soft traveling light-pulses, backdrop starfield, drifting nebula tint replacing the scan sweep, near-black panel) — all behaviors preserved. | v11.0 cosmos-real : photographic pass — ACES+sRGB tone mapping, white-weighted desaturated stellar palette + heavier size-skew, reduced/slowed twinkle, spikes only on brightest stars; cut additive glow (neb/galaxy/core), tight nucleus; markedly slower rotations/drift; rarer/quicker meteors; filamentary multi-layer muted nebulae; tighter higher-contrast galaxy; finer Jupiter banding + limb darkening + near-black night side. Asteroid belt, flares, comet click, cursor-gravity intact. -->
+<!-- Pratik Cholkhane portfolio | v13.0 voice-plain : dialed the copy back from marketing-speak to plain, understated technical language per feedback that it read AI-generated — removed "work backward / bias for shipping / dove deep / instrumented / earn trust / reusable mechanisms / from the ground up" and leaned on concrete terms (data pipelines, data architecture, AI analytics, digital twins, geospatial simulation, reconciliation, rule engines). Facts unchanged; case-study "Impact" label kept. | v12.9 voice-bigtech : rewrote the marketing copy (meta, hero eyebrow/lead, About paragraphs, Systems card summaries, Architecture lead, Path role descriptions, footer tagline) into the crisp, outcome-and-ownership register used at Apple/Amazon/Tesla — strong action verbs (own, ship, drove, instrumented, dove deep), scale/impact framing, and keywords (work backward, bias for action, source of truth, mechanisms, from the ground up, data-driven, earn trust) — keeping every claim truthful. Case-study bodies kept (already Problem/Constraint/Built structure); "Outcome" label elevated to "Impact". No layout/behavior changes. | v12.8 scrub-plant-code : removed the internal plant code from everywhere it appeared — meta description, the boot wordmark, the hero wordmark, the About paragraph, the Path role location, and the AI-assistant system prompt — keeping "Welspun" and "Little Rock, AR" so the copy still reads naturally. No other content/behavior changes. | v12.7 statfix : the stat-band numbers (6 storage yards / 34 fleet assets / 27% FG tonnage) were stuck at 0 when the IntersectionObserver count-up did not fire; rewrote it to be robust — animates on scroll-into-view via IO, snaps to final instantly under prefers-reduced-motion, and adds a scroll/resize/on-load viewport fallback (done-guarded) so the values always reach their targets and never stay at 0. | v12.6 resume-contact : added a downloadable résumé (Pratik_Cholkhane_Resume.pdf, linked relatively so it works on GitHub Pages when uploaded beside index.html) via an always-visible Resume button in the nav + a link in the footer; turned the footer into a contact row with clickable email (mailto:pratikvc18@gmail.com) and phone (tel:+15712509016), and filled the previously-empty GitHub link (github.com/pratikvc18, inferred from the resume portfolio URL). foot-links now wraps on small screens. Content/layout-only. | v12.5 orbit-cosmos : made the fixed cosmos background interactive like the hero scene — drag empty background to orbit the camera around the look-point (Jupiter revolves across the view; the starfield/galaxy re-angle), with a little release-inertia; clamped yaw +/-1.25rad, pitch +/-0.5rad. Zoom is done via field-of-view (so the camera never flies into Jupiter): pinch on touch, Alt/Cmd + wheel on desktop, and page-scroll still gently zooms/dollies in. Drag is hooked on window and only starts over empty background (never over links/cards/buttons/canvases/panels), so every click, scroll, and the star cursor keep working; text-select suppressed only mid-drag. Jupiter/galaxy self-rotation, comet, flares, hover labels unchanged. | v12.4 comet-smooth : the pointer tail now curves smoothly instead of showing straight facets on tight motion (spirals/loops). The eased-head path is resampled with a Catmull-Rom spline into a dense centerline (6 subdivisions/segment) before the tapered glow+core ribbon is filled, so the streak follows a true curve with no polygonal edges. Head size, taper, colours, click sparkle burst, hover, touch, reduced-motion all unchanged. | v12.3 comet-pointer-fix : eliminated the beading/dots in the pointer tail by replacing the per-segment round-capped strokes (whose caps poked out where segment widths changed) with a single filled tapered ribbon per pass (glow + core), built from perpendicular offsets along the eased-head path with a head->tail alpha gradient — fully continuous, no caps. Also enlarged the cursor slightly: head glow 33->40, diffraction spikes 26->31, nucleus 2.7->3.3, tail a touch wider. All behavior (click sparkle burst, hover-grow, touch, reduced-motion, magnetic nav pull) unchanged. | v12.2 comet-pointer : reworked the star pointer into a smooth continuous shooting star. Replaced the speed-gated scatter-particle trail (0 dots when slow, up to 3 splayed dots when fast, so it read as broken/choppy in motion) with a tapered additive comet tail drawn as a continuous stroke along its recent eased path (26-frame history; warm-white head to cool-blue tail; soft-glow pass + bright-core pass; tail retracts smoothly on stop). Head tracks more responsively (ease .2 to .35), smears slightly along its velocity, and its diffraction spikes fade as it accelerates; click/tap sparkle burst, hover-grow, touch, and reduced-motion (static star, no trail) all preserved. Single canvas, one rAF. | v12.1 stack-below-about : moved the Stack & Tooling / Certifications card out of the About right-hand grid column to a full-width block directly below the About paragraphs, left-aligned (About text now a single readable left column, max-width 700px; card matches). It keeps its existing `.reveal` class, so it fades/rises/unblurs on scroll with the exact same staggered transition as the System Architecture stage. Layout-only; content/animation/behavior unchanged. | v12.0 star-ignition boot : replaced the terminal boot screen (log lines / #bootLog box / segmented #bootBar) with a cinematic 2D-canvas STAR IGNITION — a faint central point that brightens, grows a soft radial glow, shimmers, and extends 4-point diffraction spikes as load progresses (star charge = progress), then a gentle bloom flash dissolves to the hero. Same wiring preserved: finish() still adds `done` to #boot + unlocks scroll; click/tap skips to ignition; ~4200ms safety timeout; prefers-reduced-motion shows a static star then finishes. Single 2D canvas, one rAF cancelled on finish; no Three.js/WebGL in the boot; the done-class handoff to the headline decode is untouched. | v11.8 responsive : cross-device layout pass (phone/tablet/desktop) — fluid clamp() spacing, 100vh->svh/dvh (fixes iOS viewport jump), <=720px de-pins the Path career dolly into a static single-column stack of the same cards + reveals detail without hover, hides inline nav-links <=600px (command palette remains), >=44px touch targets, and a --vh var + orientationchange->resize so hero/cosmos/star-chart/arch/cursor canvases recompute on rotate. Content/behavior/colors unchanged. | v11.7 : refined hero headline ("operational intelligence" positioning, dropped "heavy industry"); expanded the UMBC Path entry with BI-analyst detail (Tableau, SSRS/REX->Tableau modernization, LOD/parameter/blend logic, SQL Server + Redshift data validation, university systems, end-to-end ticket ownership) + DoIT/assistantship context. | v11.6 : expanded the Yard Digital Twin case study with a productionization story (Taking it live: hosting behind Welspun SSO, a persistence/memory layer, scheduled live-data refresh, Azure App Service deploy + single-tenant Entra ID; plus the upstream source-vs-system-of-record data-fork) and added deployment tech tags. | v11.5 : enlarged the star pointer slightly (glow 26->33, spikes 22->28, core 2.0->2.7); removed the cosmos asteroid/meteoroid belt (the chunky low-poly rocks that read as unrealistic) + its per-frame updates and now-unused noise helpers; near-star cursor-gravity, lens flares, comet click, Jupiter, galaxy all intact. | v11.4 star-pointer : custom cursor replaced by a single-canvas interstellar star pointer (eased core+glow+diffraction spikes matching the cosmos/constellation language, speed-scaled warm->cool comet trail, hover grows/intensifies over interactive targets, click/tap twinkle burst). Works on touch (appears on touchstart, follows, fades after touchend); overlay is pointer-events:none, passive touch, one rAF. Old .cur-ring/.cur-dot + .cursor-light retired; OS cursor hidden on fine pointers (inputs keep text). Reduced-motion = static star, no trail. | v11.3 arch-blend : System Architecture section dissolved into the shared cosmos — .arch-stage panel made transparent w/ a hairline border, the #archCanvas faux-sky (own starfield + nebula tint) removed so the fixed #cosmos shows through, soft dark halos added behind node labels + legend for legibility. Glows still use lighter compositing then reset; all graph behavior unchanged. | v11.2 systems-starmap : "Systems in Production" rebuilt as a navigable 2D-canvas constellation (six hand-placed stars w/ glow halos + twinkle + live-anchor spikes, faint constellation lines that light on hover, backdrop starfield, glass "stellar dossier" on hover/focus, click/Enter opens the case study via __morphFrom/__openCase, keyboard + vrail-dot + sr-only access). Dolly/meteorite treatment removed for #work; Path/arch/hero/modal untouched. | v11.1 starmap : architecture graph reskinned as an interstellar constellation chart (layered stars w/ glow halos + twinkle, diffraction spikes on in-production anchors, faint constellation lines, soft traveling light-pulses, backdrop starfield, drifting nebula tint replacing the scan sweep, near-black panel) — all behaviors preserved. | v11.0 cosmos-real : photographic pass — ACES+sRGB tone mapping, white-weighted desaturated stellar palette + heavier size-skew, reduced/slowed twinkle, spikes only on brightest stars; cut additive glow (neb/galaxy/core), tight nucleus; markedly slower rotations/drift; rarer/quicker meteors; filamentary multi-layer muted nebulae; tighter higher-contrast galaxy; finer Jupiter banding + limb darkening + near-black night side. Asteroid belt, flares, comet click, cursor-gravity intact. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Pratik Cholkhane — AI Engineer · Digital Twins & Geospatial Simulation</title>
-<meta name="description" content="Pratik Cholkhane — AI Engineer building digital twins, geospatial simulation, and predictive systems on real-time data. Planning Engineer, Operations & Analytics at Welspun, Plant 4110." />
+<meta name="description" content="Pratik Cholkhane — AI Engineer. I build data pipelines, digital twins, and analytics for industrial operations, turning real-time operational data into clear decisions. Planning Engineer, Operations & Analytics at Welspun." />
 <meta name="author" content="Pratik Cholkhane" />
 <meta name="theme-color" content="#05060a" />
 <meta property="og:type" content="website" />
@@ -202,7 +202,7 @@
   footer{padding:60px 0 48px;border-top:1px solid var(--line);margin-top:40px}
   .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
   .foot .copy{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.06em}
-  .foot-links{display:flex;gap:22px}
+  .foot-links{display:flex;flex-wrap:wrap;gap:22px}
   .foot-links a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.08em;transition:color .25s}
   .foot-links a:hover{color:var(--text)}
 
@@ -296,6 +296,8 @@
   .cmdk-hint{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line-strong);border-radius:7px;padding:6px 10px;background:rgba(255,255,255,.03);cursor:pointer;transition:border-color .25s,color .25s;white-space:nowrap}
   .cmdk-hint:hover{border-color:var(--cyan);color:var(--text)}
   .nav-right{display:flex;align-items:center;gap:22px}
+  .nav-resume{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:1px solid var(--line-strong);padding:7px 13px;border-radius:8px;white-space:nowrap;transition:color .25s,border-color .25s,background .25s}
+  .nav-resume:hover{color:var(--text);border-color:var(--cyan);background:rgba(34,211,238,.06)}
   .cmdk{position:fixed;inset:0;z-index:120;display:flex;align-items:flex-start;justify-content:center;padding-top:13vh;opacity:0;pointer-events:none;transition:opacity .25s}
   .cmdk.open{opacity:1;pointer-events:auto}
   .cmdk-bd{position:absolute;inset:0;background:rgba(4,5,9,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
@@ -453,7 +455,7 @@
   <a href="#about" class="skip">Skip to content</a>
   <div id="boot">
     <canvas id="bootStar"></canvas>
-    <div class="boot-mono">Welspun &middot; Plant 4110</div>
+    <div class="boot-mono">Welspun &middot; Little Rock AR</div>
     <div class="boot-skip">click to skip</div>
   </div>
   <div class="hud-corner tl"></div><div class="hud-corner tr"></div><div class="hud-corner bl"></div><div class="hud-corner br"></div>
@@ -469,6 +471,7 @@
     <div class="mark"><span class="dot"></span>PRATIK&nbsp;CHOLKHANE</div>
     <div class="nav-right">
       <div class="nav-links"><a href="#about">About</a><a href="#work">Systems</a><a href="#architecture">Architecture</a><a href="#path">Path</a><a href="#contact">Contact</a></div>
+      <a class="nav-resume" href="Pratik_Cholkhane_Resume.pdf" target="_blank" rel="noopener">R&eacute;sum&eacute;</a>
       <button class="cmdk-hint" id="cmdkHint" aria-label="Open command palette" title="Command palette (⌘K)">&#8984;K</button>
     </div>
   </nav>
@@ -477,10 +480,10 @@
     <header>
       <canvas id="scene"></canvas>
       <div class="hero-content">
-        <div class="eyebrow reveal">AI Engineer &middot; Digital Twins &amp; Geospatial Simulation</div>
+        <div class="eyebrow reveal">AI Engineer &middot; Digital Twins &middot; Data Architecture</div>
         <h1 class="reveal">I build the digital infrastructure behind <span class="grad">operational intelligence</span>.</h1>
-        <p class="lead reveal">From mechanical engineering and the coating line into AI, data engineering, and geospatial simulation &mdash; I turn <strong>SAP exports, telematics feeds, and yard reality</strong> into systems people actually make decisions with.</p>
-        <div class="wordmark reveal">// <b>Pratik Cholkhane, PMP&reg;</b> &nbsp;·&nbsp; Welspun &nbsp;·&nbsp; Plant 4110, Little Rock AR</div>
+        <p class="lead reveal">I build <strong>data pipelines, digital twins, and AI analytics</strong> for industrial operations &mdash; turning SAP exports, telematics feeds, and yard data into 3D models, dashboards, and rule engines that teams use to make decisions.</p>
+        <div class="wordmark reveal">// <b>Pratik Cholkhane, PMP&reg;</b> &nbsp;·&nbsp; Welspun &nbsp;·&nbsp; Little Rock AR</div>
         <div class="orbit-hint reveal"><span class="ring"></span> Drag the yard to orbit</div>
         <div class="console reveal">
           <div class="cell"><div class="k">Yard model</div><div class="v">3D <small>digital twin</small></div></div>
@@ -497,9 +500,9 @@
       <div class="sec-head reveal"><span class="sec-num">01</span><span class="sec-title">About</span><span class="sec-line"></span></div>
       <div class="about-grid">
         <div class="reveal">
-          <p>I sit between the floor and the data. My path runs from <strong>mechanical engineering</strong> and supply chain into <strong>AI, data engineering, and operations systems</strong> &mdash; so I can stand on a coating line and model what's happening above it.</p>
-          <p>At Welspun's Plant 4110 in Little Rock, I'm the <strong>engine builder, not the engine operator</strong> &mdash; I build the digital infrastructure yard operations runs on: digital twins rendered from live SAP data, executive dashboards leadership trusts, and rule engines that catch what spreadsheets quietly miss.</p>
-          <p>My north star is simple &mdash; <strong>honest numbers over optimistic presentation</strong>, automation as the source of truth, and human input as confirmation.</p>
+          <p>My background runs from <strong>mechanical engineering</strong> and supply chain into <strong>AI, data engineering, and geospatial systems</strong>. I work between the plant floor and the data &mdash; close enough to the operation to build the pipelines and models that represent it accurately.</p>
+          <p>At Welspun, I build the systems yard operations run on: a <strong>digital twin</strong> rendered from live SAP data, executive dashboards for plant leadership, and rule engines that surface issues spreadsheets miss.</p>
+          <p>I care about <strong>honest numbers over polished presentation</strong>, automated data as the source of truth, and human input as confirmation &mdash; detection in code, diagnosis in AI.</p>
         </div>
       </div>
       <div class="stack-card reveal">
@@ -532,9 +535,9 @@
         <article class="card has-tag">
           <span class="idx">/ 01</span><span class="tag">Live</span><span class="expand">+</span>
           <h3>Yard Digital Twin</h3>
-          <p>A geo-accurate 3D model of the pipe-storage yards, rendered live from SAP stock data. Dual 3D/2D renderer, a card-based ZWASR13 import pipeline, and production &amp; dispatch trends on a shared timeline.</p>
+          <p>A geo-accurate 3D model of the storage yards, rendered live from SAP stock data. Dual 3D/2D renderers, a card-based ZWASR13 import pipeline, and production &amp; dispatch trends on a shared timeline.</p>
           <div class="tech"><span>Three.js</span><span>WebGL</span><span>SAP</span><span>JavaScript</span></div>
-          <div class="card-more"><div><p>Built under a strict additive-only engineering discipline with a validation gate on every ship. The SAP import stages on drop and runs on an explicit command, so the model never drifts from source truth.</p></div></div>
+          <div class="card-more"><div><p>Built under a strict additive-only engineering discipline with a validation gate on every release. The SAP import stages on drop and runs on an explicit command, so the model never drifts from source data.</p></div></div>
         </article>
         </div>
         <div class="tile-c" data-i="1" data-label="AI Intelligence Layer">
@@ -550,7 +553,7 @@
         <article class="card">
           <span class="idx">/ 03</span><span class="expand">+</span>
           <h3>Executive KPI Dashboards</h3>
-          <p>Daily operations scorecards for plant leadership &mdash; targets, RAG status, week-on-week deltas &mdash; across coating plant and spiral mill, in a clean liquid-glass house style.</p>
+          <p>Daily operations scorecards for plant leadership &mdash; targets, RAG status, and week-on-week deltas &mdash; across two plants, on a consistent reporting standard.</p>
           <div class="tech"><span>Recharts</span><span>Tableau</span><span>BI</span><span>SAP</span></div>
           <div class="card-more"><div><p>Designed to a repeatable house style: daily scorecards with targets and RAG status, week-on-week delta blocks, and remarks &mdash; readable in ten seconds by leadership.</p></div></div>
         </article>
@@ -559,7 +562,7 @@
         <article class="card">
           <span class="idx">/ 04</span><span class="expand">+</span>
           <h3>SAP Inventory Analytics</h3>
-          <p>Programmatic reconciliation of warehouse exports that surfaced unlocated tonnage, default-bin dumping, and negative-stock artifacts &mdash; then turned them into the case for digital infrastructure.</p>
+          <p>Reconciliation and analysis of SAP warehouse exports that surfaced unlocated tonnage, default-bin dumping, and negative-stock artifacts &mdash; and turned them into the case for digital infrastructure.</p>
           <div class="tech"><span>Python</span><span>SAP WM/MM</span><span>Reconciliation</span></div>
           <div class="card-more"><div><p>Every figure was reconciled against source export totals before any conclusion &mdash; turning WE-ZONE and default-bin dumping from data noise into a quantified case for investment.</p></div></div>
         </article>
@@ -568,7 +571,7 @@
         <article class="card">
           <span class="idx">/ 05</span><span class="expand">+</span>
           <h3>Fleet Telematics Attribution</h3>
-          <p>Mapping driver-to-vehicle attribution across a 34-asset yard fleet and bridging Motive into timekeeping &mdash; making cost and utilization data trustworthy.</p>
+          <p>Driver-to-vehicle attribution across a 34-asset fleet, bridging Motive telematics into timekeeping so utilization and cost data are accurate.</p>
           <div class="tech"><span>Motive</span><span>Kronos</span><span>Data engineering</span></div>
           <div class="card-more"><div><p>Untangled the "Unidentified Driver" problem so utilization and cost finally tie back to real people and shifts &mdash; the prerequisite for any trustworthy cost dashboard.</p></div></div>
         </article>
@@ -577,7 +580,7 @@
         <article class="card has-tag">
           <span class="idx">/ 06</span><span class="tag">Independent</span><span class="expand">+</span>
           <h3>Latur Economic Initiative</h3>
-          <p>An independent feasibility study modeling three processing &amp; storage ventures from a 226-page district strategic plan, paired with an interactive ROI dashboard.</p>
+          <p>An independent feasibility study modeling three processing &amp; storage ventures from a 226-page district plan, paired with an interactive ROI dashboard.</p>
           <div class="tech"><span>Recharts</span><span>Financial modeling</span></div>
           <div class="card-more"><div><p>Found that manufacturing carried the highest growth elasticity yet was misclassified as "maintain", then modeled three ventures with ROI, capital, and risk side by side.</p></div></div>
         </article>
@@ -614,8 +617,8 @@
         <article class="card has-tag">
           <span class="idx">Mar 2026 &mdash; Present</span><span class="tag">Current</span>
           <h3>Planning Engineer &mdash; Operations &amp; Analytics</h3>
-          <p>Welspun &middot; Plant 4110 &mdash; Little Rock, AR</p>
-          <div class="card-more"><div><p>Building the digital backbone of yard operations &mdash; a 3D digital twin rendered from live SAP data, executive dashboards leadership trusts, and a rule engine that flags what spreadsheets miss, fed by telematics and an autonomous-drone program. Power BI &middot; ArcGIS Pro.</p></div></div>
+          <p>Welspun &mdash; Little Rock, AR</p>
+          <div class="card-more"><div><p>Building the data architecture behind yard operations &mdash; a 3D digital twin rendered from live SAP data, executive dashboards for leadership, and a rule engine that flags what spreadsheets miss, fed by telematics and an autonomous-drone program. Power BI &middot; ArcGIS Pro.</p></div></div>
         </article>
         </div>
         <div class="tile-c" data-label="UMBC">
@@ -631,7 +634,7 @@
           <span class="idx">2020 &mdash; 2023</span>
           <h3>Project Business Analyst &middot; Process Development Engineer</h3>
           <p>Total Tools &amp; Equipment Pvt. Ltd. &mdash; Pune / Mumbai, India</p>
-          <div class="card-more"><div><p>Three years across operations and supply chain &mdash; from process development on the floor to business analysis driving planning, sourcing, and continuous improvement.</p></div></div>
+          <div class="card-more"><div><p>Three years across operations and supply chain &mdash; from process development on the floor to business analysis supporting planning, sourcing, and continuous improvement.</p></div></div>
         </article>
         </div>
         <div class="tile-c" data-label="Education">
@@ -660,8 +663,8 @@
 
     <footer id="contact">
       <div class="foot">
-        <div class="copy">© 2026 Pratik Cholkhane &nbsp;·&nbsp; AI Engineer · Digital Twins &amp; Geospatial Simulation</div>
-        <div class="foot-links"><a href="https://www.linkedin.com/in/pratikc24" target="_blank" rel="noopener">LinkedIn</a><a href="#" id="ghLink" target="_blank" rel="noopener">GitHub</a><a href="#" id="emailLink">Email</a></div>
+        <div class="copy">© 2026 Pratik Cholkhane &nbsp;·&nbsp; AI Engineer · Digital Twins · Geospatial Simulation</div>
+        <div class="foot-links"><a href="mailto:pratikvc18@gmail.com">pratikvc18@gmail.com</a><a href="tel:+15712509016">(571)&nbsp;250-9016</a><a href="https://www.linkedin.com/in/pratikc24" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/pratikvc18" id="ghLink" target="_blank" rel="noopener">GitHub</a><a href="Pratik_Cholkhane_Resume.pdf" target="_blank" rel="noopener">R&eacute;sum&eacute;</a></div>
       </div>
     </footer>
   </div>
@@ -735,7 +738,7 @@
         ['Problem','Across six storage yards, where any given pipe physically sat was effectively invisible — the truth lived in SAP exports nobody could picture, so planning and dispatch ran on memory and walking the yard.'],
         ['Constraint','A single-file engine held to strict additive-only discipline: every change isolated, a validation gate (JS parse + CSS balance) passing before each ship, and a version banner bumped with a changelog so the model never silently drifts.'],
         ['What I built','A dual 3D / 2D renderer that ingests ZWASR13 stock exports through a card-based import pipeline — stage-on-drop, run on explicit command — and overlays production and dispatch trends on a shared timeline.'],
-        ['Outcome','A live, geo-accurate picture of the yards that leadership can actually trust, turning unlocated stock from an invisible problem into a visible, quantified case for investment.'],
+        ['Impact','A live, geo-accurate picture of the yards that leadership can actually trust, turning unlocated stock from an invisible problem into a visible, quantified case for investment.'],
         ['Taking it live','A staged path from single file to live system: (1) serve the file behind Welspun SSO so colleagues open a URL instead of a local file; (2) add a persistence layer that writes every SAP snapshot to a timestamped store and never overwrites it \u2014 the unlock that gives the twin memory, turning day-over-day diffs and anomaly trends into a single query; (3) auto-refresh the ZWASR13 feed on a schedule so it stays current without a manual export. I deployed the twin to Azure App Service to prove it runs served over HTTPS \u2014 the prerequisite for live fetch \u2014 and scoped single-tenant Microsoft Entra ID login, keeping the surface read-only with sample data until data-governance sign-off.'],
         ['Source vs. system-of-record','The higher-maturity design forks the capture feed instead of only reading SAP after the fact: tap the raw shop-floor event upstream \u2014 MES, RF scanners, or existing middleware \u2014 and mirror it to a parallel store, passively and read-only, while SAP keeps its own copy. The gap between what actually happened and what SAP posted then becomes its own anomaly signal \u2014 an invariant check a rung above export-based detection.']],
       tech:['Three.js','WebGL','SAP ZWASR13','JavaScript','Azure App Service','Entra ID (SSO)','SQLite']},
@@ -745,7 +748,7 @@
         ['Problem','Pipes move through a strict lifecycle, but illegal state transitions slipped through unnoticed until they caused downstream errors no spreadsheet caught.'],
         ['Constraint','Detection had to be deterministic and auditable — not a black box. An LLM guessing anomalies was a non-starter.'],
         ['What I built','A state machine and rule engine that flag illegal transitions in code, with an LLM layered strictly on top as explainer and diagnostician — detection in code, diagnosis in AI.'],
-        ['Outcome','Every flag is reproducible and explainable: the engine says what broke, the model says why and what to do, with no false confidence.']],
+        ['Impact','Every flag is reproducible and explainable: the engine says what broke, the model says why and what to do, with no false confidence.']],
       tech:['State machines','Rule engine','LLM']},
     2:{idx:'/ 03',title:'Executive KPI Dashboards',tag:'',twin:false,
       metrics:[['2','plants covered'],['Daily','reporting cadence'],['10s','to read a scorecard']],
@@ -753,7 +756,7 @@
         ['Problem','Leadership needed a daily read on coating plant and spiral mill performance, but the numbers were scattered and slow to assemble.'],
         ['Constraint','A repeatable house style readable in seconds, with honest signals — no vanity metrics dressed up to look better than reality.'],
         ['What I built','Daily scorecards with targets, RAG status, week-on-week delta blocks and remarks, in a clean liquid-glass style, built to a reusable template across both plants.'],
-        ['Outcome','A ten-second read for executives, and a format that scales to new lines without redesign. Misleading sequential-yield figures were removed in favor of defensible repair-rate and net line-yield signals.']],
+        ['Impact','A ten-second read for executives, and a format that scales to new lines without redesign. Misleading sequential-yield figures were removed in favor of defensible repair-rate and net line-yield signals.']],
       tech:['Recharts','Tableau','BI','SAP']},
     3:{idx:'/ 04',title:'SAP Inventory Analytics',tag:'',twin:false,
       metrics:[['27%','FG tonnage unlocated'],['100%','QC Remarks empty'],['Source','reconciled totals']],
@@ -761,7 +764,7 @@
         ['Problem','Warehouse exports were riddled with artifacts: ~27% of finished-goods tonnage sat in a placeholder zone with no real bin, a default bin absorbed most scans, and negative-stock rows piled up from unreconciled moves.'],
         ['Constraint','Configuration changes belong to the functional SAP team — findings had to be framed for them to test and transport, not floor-process hacks, and every number reconciled to source before any conclusion.'],
         ['What I built','A programmatic reconciliation pipeline that isolates the finished-goods block, audits bin assignments and goods movements, and surfaces the data-integrity gaps with evidence.'],
-        ['Outcome','Unlocated stock and default-bin dumping became a quantified, defensible case for digital infrastructure investment — evidence, not just data.']],
+        ['Impact','Unlocated stock and default-bin dumping became a quantified, defensible case for digital infrastructure investment — evidence, not just data.']],
       tech:['Python','SAP WM/MM','Reconciliation']},
     4:{idx:'/ 05',title:'Fleet Telematics Attribution',tag:'',twin:false,
       metrics:[['34','assets in scope'],['18','tracked at start'],['Fixed','driver attribution']],
@@ -769,7 +772,7 @@
         ['Problem','Across a 34-asset yard fleet, telematics attributed nearly all activity to an "Unidentified Driver," so utilization and cost data tied to no one and meant nothing.'],
         ['Constraint','Cost reporting downstream depended on this — the attribution had to be real, mapping vehicles to drivers and shifts, before any cost dashboard could be trusted.'],
         ['What I built','A driver-to-vehicle attribution mapping bridging Motive telematics into Kronos timekeeping, aligned to the workforce and shift chart.'],
-        ['Outcome','Utilization and cost finally tie back to real people and shifts — the prerequisite that unblocks trustworthy cost reporting.']],
+        ['Impact','Utilization and cost finally tie back to real people and shifts — the prerequisite that unblocks trustworthy cost reporting.']],
       tech:['Motive','Kronos','Data engineering']},
     5:{idx:'/ 06',title:'Latur Economic Initiative',tag:'Independent',twin:false,
       metrics:[['3','ventures modeled'],['13–18%','projected ROI'],['1.015','mfg. growth elasticity']],
@@ -777,7 +780,7 @@
         ['Problem','A 226-page district strategic plan classified manufacturing as "maintain," despite it carrying the highest growth elasticity (1.015) of any sector — a structural misread of where to invest.'],
         ['Constraint','Recommendations had to be investable and risk-aware, not academic — capital, ROI, and downside modeled side by side.'],
         ['What I built','Three modeled ventures — a tur dal processing mill (~₹1.65 cr, ~15% ROI), a scientific warehouse (~₹3.3 cr, ~18% ROI, lowest risk), and cold storage (~₹5.5 cr, ~13% ROI) — with an interactive feasibility dashboard.'],
-        ['Outcome','A clear, comparable investment case that reframes manufacturing from "maintain" to the region\u2019s highest-leverage bet.']],
+        ['Impact','A clear, comparable investment case that reframes manufacturing from "maintain" to the region\u2019s highest-leverage bet.']],
       tech:['Recharts','Financial modeling']}
   };
 
@@ -1432,7 +1435,7 @@
   (function(){
     const fab=document.getElementById('aiFab'),panel=document.getElementById('aiPanel'),closeBtn=document.getElementById('aiClose'),
       msgs=document.getElementById('aiMsgs'),input=document.getElementById('aiInput'),send=document.getElementById('aiSend'),suggest=document.getElementById('aiSuggest');
-    const SYSTEM="You are the portfolio assistant for Pratik Cholkhane, PMP — an AI Engineer working on Digital Twins, Geospatial Simulation, and Predictive Systems on Real-Time Data. His current role is Planning Engineer, Operations & Analytics at Welspun (Plant 4110, Little Rock, AR). Career: Welspun (2026-present); Business Intelligence Analyst & Project Coordinator at UMBC (2024-2026); Project Business Analyst & Process Development Engineer at Total Tools & Equipment in India (2020-2023); earlier engineering internships at MASS Precision, Mahindra, and Honda; M.S. Engineering Management (UMBC) and B.S. Mechanical Engineering. Certifications: PMP, CSPO, CAPM. Answer visitor questions about his work, warmly and concisely (2-4 sentences). Speak about Pratik in third person. Here is the portfolio:\n"+
+    const SYSTEM="You are the portfolio assistant for Pratik Cholkhane, PMP — an AI Engineer working on Digital Twins, Geospatial Simulation, and Predictive Systems on Real-Time Data. His current role is Planning Engineer, Operations & Analytics at Welspun (Little Rock, AR). Career: Welspun (2026-present); Business Intelligence Analyst & Project Coordinator at UMBC (2024-2026); Project Business Analyst & Process Development Engineer at Total Tools & Equipment in India (2020-2023); earlier engineering internships at MASS Precision, Mahindra, and Honda; M.S. Engineering Management (UMBC) and B.S. Mechanical Engineering. Certifications: PMP, CSPO, CAPM. Answer visitor questions about his work, warmly and concisely (2-4 sentences). Speak about Pratik in third person. Here is the portfolio:\n"+
       "ABOUT: Background spans mechanical engineering and change management into BI, data engineering, and operations systems. Self-described as the 'engine builder, not the engine operator' who builds the digital infrastructure yard operations runs on. Principles: honest numbers over optimistic presentation; automation as source of truth, human input as confirmation; detection in code, diagnosis in AI.\n"+
       "STACK: SAP (WM/MM/SD), Three.js, WebGL, Python, Tableau, Power BI, Recharts, QGIS, Motive, Kronos, Node.js, rule engines, LLM integration.\n"+
       "PROJECTS:\n1) Yard Digital Twin — geo-accurate 3D model of the pipe-storage yards rendered live from SAP stock data; dual 3D/2D renderer, card-based ZWASR13 import pipeline, production & dispatch trends on a shared timeline; built under strict additive-only discipline with a validation gate on every ship.\n2) AI Intelligence Layer — deterministic state machine + rule engine flagging illegal pipe-state transitions, with an LLM as explainer/diagnostician. Detection in code, diagnosis in AI.\n3) Executive KPI Dashboards — daily ops scorecards for plant leadership: targets, RAG status, week-on-week deltas, across coating plant and spiral mill, liquid-glass house style.\n4) SAP Inventory Analytics — programmatic reconciliation of warehouse exports surfacing unlocated tonnage, default-bin dumping, negative-stock artifacts; every figure reconciled to source totals; turned into the case for digital infrastructure.\n5) Fleet Telematics Attribution — driver-to-vehicle attribution across a 34-asset yard fleet, bridging Motive into Kronos timekeeping; untangled the 'Unidentified Driver' problem.\n6) Latur Economic Initiative (independent) — feasibility study modeling three processing/storage ventures from a 226-page district strategic plan with an interactive ROI dashboard.\n"+
@@ -1703,13 +1706,23 @@
 
     // (removed dead statement-scroll block; #statement / #stmt no longer exist)
 
-    // big-stat count-up on view
-    if(!reduce){
-      const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);
-        const el=e.target.querySelector('.n');if(!el)return;const to=+el.dataset.to,suf=el.dataset.suf||'';let t0=null;
-        function s(ts){if(!t0)t0=ts;const p=Math.min(1,(ts-t0)/1100);const k=1-Math.pow(1-p,3);el.textContent=Math.round(to*k)+suf;if(p<1)requestAnimationFrame(s);}requestAnimationFrame(s);
-      });},{threshold:.5});
-      document.querySelectorAll('.bigstat').forEach(b=>io.observe(b));
+    // big-stat count-up (robust): animates when scrolled into view, instant under reduced-motion, and a scroll/resize fallback so the numbers never stay stuck at 0
+    {
+      const bs=[...document.querySelectorAll('.bigstat')];
+      const done=new WeakSet();
+      const finalOf=el=>(+el.dataset.to||0)+(el.dataset.suf||'');
+      function run(el){if(!el||done.has(el))return;done.add(el);
+        if(reduce){el.textContent=finalOf(el);return;}
+        const to=+el.dataset.to||0,suf=el.dataset.suf||'';let t0=null;
+        function s(ts){if(t0==null)t0=ts;const p=Math.min(1,(ts-t0)/1100);const k=1-Math.pow(1-p,3);el.textContent=Math.round(to*k)+suf;if(p<1)requestAnimationFrame(s);else el.textContent=finalOf(el);}
+        requestAnimationFrame(s);
+      }
+      if(reduce){bs.forEach(b=>run(b.querySelector('.n')));}
+      else{
+        if('IntersectionObserver' in window){const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){run(e.target.querySelector('.n'));io.unobserve(e.target);}});},{threshold:.35});bs.forEach(b=>io.observe(b));}
+        const check=()=>{bs.forEach(b=>{const el=b.querySelector('.n');if(el&&!done.has(el)){const r=b.getBoundingClientRect();if(r.top<innerHeight*0.9&&r.bottom>0)run(el);}});};
+        addEventListener('scroll',check,{passive:true});addEventListener('resize',check,{passive:true});check();
+      }
     }
 
     // live in-production clock (Little Rock / America/Chicago)
