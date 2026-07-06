@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Pratik Cholkhane portfolio | v13.0 voice-plain : dialed the copy back from marketing-speak to plain, understated technical language per feedback that it read AI-generated — removed "work backward / bias for shipping / dove deep / instrumented / earn trust / reusable mechanisms / from the ground up" and leaned on concrete terms (data pipelines, data architecture, AI analytics, digital twins, geospatial simulation, reconciliation, rule engines). Facts unchanged; case-study "Impact" label kept. | v12.9 voice-bigtech : rewrote the marketing copy (meta, hero eyebrow/lead, About paragraphs, Systems card summaries, Architecture lead, Path role descriptions, footer tagline) into the crisp, outcome-and-ownership register used at Apple/Amazon/Tesla — strong action verbs (own, ship, drove, instrumented, dove deep), scale/impact framing, and keywords (work backward, bias for action, source of truth, mechanisms, from the ground up, data-driven, earn trust) — keeping every claim truthful. Case-study bodies kept (already Problem/Constraint/Built structure); "Outcome" label elevated to "Impact". No layout/behavior changes. | v12.8 scrub-plant-code : removed the internal plant code from everywhere it appeared — meta description, the boot wordmark, the hero wordmark, the About paragraph, the Path role location, and the AI-assistant system prompt — keeping "Welspun" and "Little Rock, AR" so the copy still reads naturally. No other content/behavior changes. | v12.7 statfix : the stat-band numbers (6 storage yards / 34 fleet assets / 27% FG tonnage) were stuck at 0 when the IntersectionObserver count-up did not fire; rewrote it to be robust — animates on scroll-into-view via IO, snaps to final instantly under prefers-reduced-motion, and adds a scroll/resize/on-load viewport fallback (done-guarded) so the values always reach their targets and never stay at 0. | v12.6 resume-contact : added a downloadable résumé (Pratik_Cholkhane_Resume.pdf, linked relatively so it works on GitHub Pages when uploaded beside index.html) via an always-visible Resume button in the nav + a link in the footer; turned the footer into a contact row with clickable email (mailto:pratikvc18@gmail.com) and phone (tel:+15712509016), and filled the previously-empty GitHub link (github.com/pratikvc18, inferred from the resume portfolio URL). foot-links now wraps on small screens. Content/layout-only. | v12.5 orbit-cosmos : made the fixed cosmos background interactive like the hero scene — drag empty background to orbit the camera around the look-point (Jupiter revolves across the view; the starfield/galaxy re-angle), with a little release-inertia; clamped yaw +/-1.25rad, pitch +/-0.5rad. Zoom is done via field-of-view (so the camera never flies into Jupiter): pinch on touch, Alt/Cmd + wheel on desktop, and page-scroll still gently zooms/dollies in. Drag is hooked on window and only starts over empty background (never over links/cards/buttons/canvases/panels), so every click, scroll, and the star cursor keep working; text-select suppressed only mid-drag. Jupiter/galaxy self-rotation, comet, flares, hover labels unchanged. | v12.4 comet-smooth : the pointer tail now curves smoothly instead of showing straight facets on tight motion (spirals/loops). The eased-head path is resampled with a Catmull-Rom spline into a dense centerline (6 subdivisions/segment) before the tapered glow+core ribbon is filled, so the streak follows a true curve with no polygonal edges. Head size, taper, colours, click sparkle burst, hover, touch, reduced-motion all unchanged. | v12.3 comet-pointer-fix : eliminated the beading/dots in the pointer tail by replacing the per-segment round-capped strokes (whose caps poked out where segment widths changed) with a single filled tapered ribbon per pass (glow + core), built from perpendicular offsets along the eased-head path with a head->tail alpha gradient — fully continuous, no caps. Also enlarged the cursor slightly: head glow 33->40, diffraction spikes 26->31, nucleus 2.7->3.3, tail a touch wider. All behavior (click sparkle burst, hover-grow, touch, reduced-motion, magnetic nav pull) unchanged. | v12.2 comet-pointer : reworked the star pointer into a smooth continuous shooting star. Replaced the speed-gated scatter-particle trail (0 dots when slow, up to 3 splayed dots when fast, so it read as broken/choppy in motion) with a tapered additive comet tail drawn as a continuous stroke along its recent eased path (26-frame history; warm-white head to cool-blue tail; soft-glow pass + bright-core pass; tail retracts smoothly on stop). Head tracks more responsively (ease .2 to .35), smears slightly along its velocity, and its diffraction spikes fade as it accelerates; click/tap sparkle burst, hover-grow, touch, and reduced-motion (static star, no trail) all preserved. Single canvas, one rAF. | v12.1 stack-below-about : moved the Stack & Tooling / Certifications card out of the About right-hand grid column to a full-width block directly below the About paragraphs, left-aligned (About text now a single readable left column, max-width 700px; card matches). It keeps its existing `.reveal` class, so it fades/rises/unblurs on scroll with the exact same staggered transition as the System Architecture stage. Layout-only; content/animation/behavior unchanged. | v12.0 star-ignition boot : replaced the terminal boot screen (log lines / #bootLog box / segmented #bootBar) with a cinematic 2D-canvas STAR IGNITION — a faint central point that brightens, grows a soft radial glow, shimmers, and extends 4-point diffraction spikes as load progresses (star charge = progress), then a gentle bloom flash dissolves to the hero. Same wiring preserved: finish() still adds `done` to #boot + unlocks scroll; click/tap skips to ignition; ~4200ms safety timeout; prefers-reduced-motion shows a static star then finishes. Single 2D canvas, one rAF cancelled on finish; no Three.js/WebGL in the boot; the done-class handoff to the headline decode is untouched. | v11.8 responsive : cross-device layout pass (phone/tablet/desktop) — fluid clamp() spacing, 100vh->svh/dvh (fixes iOS viewport jump), <=720px de-pins the Path career dolly into a static single-column stack of the same cards + reveals detail without hover, hides inline nav-links <=600px (command palette remains), >=44px touch targets, and a --vh var + orientationchange->resize so hero/cosmos/star-chart/arch/cursor canvases recompute on rotate. Content/behavior/colors unchanged. | v11.7 : refined hero headline ("operational intelligence" positioning, dropped "heavy industry"); expanded the UMBC Path entry with BI-analyst detail (Tableau, SSRS/REX->Tableau modernization, LOD/parameter/blend logic, SQL Server + Redshift data validation, university systems, end-to-end ticket ownership) + DoIT/assistantship context. | v11.6 : expanded the Yard Digital Twin case study with a productionization story (Taking it live: hosting behind Welspun SSO, a persistence/memory layer, scheduled live-data refresh, Azure App Service deploy + single-tenant Entra ID; plus the upstream source-vs-system-of-record data-fork) and added deployment tech tags. | v11.5 : enlarged the star pointer slightly (glow 26->33, spikes 22->28, core 2.0->2.7); removed the cosmos asteroid/meteoroid belt (the chunky low-poly rocks that read as unrealistic) + its per-frame updates and now-unused noise helpers; near-star cursor-gravity, lens flares, comet click, Jupiter, galaxy all intact. | v11.4 star-pointer : custom cursor replaced by a single-canvas interstellar star pointer (eased core+glow+diffraction spikes matching the cosmos/constellation language, speed-scaled warm->cool comet trail, hover grows/intensifies over interactive targets, click/tap twinkle burst). Works on touch (appears on touchstart, follows, fades after touchend); overlay is pointer-events:none, passive touch, one rAF. Old .cur-ring/.cur-dot + .cursor-light retired; OS cursor hidden on fine pointers (inputs keep text). Reduced-motion = static star, no trail. | v11.3 arch-blend : System Architecture section dissolved into the shared cosmos — .arch-stage panel made transparent w/ a hairline border, the #archCanvas faux-sky (own starfield + nebula tint) removed so the fixed #cosmos shows through, soft dark halos added behind node labels + legend for legibility. Glows still use lighter compositing then reset; all graph behavior unchanged. | v11.2 systems-starmap : "Systems in Production" rebuilt as a navigable 2D-canvas constellation (six hand-placed stars w/ glow halos + twinkle + live-anchor spikes, faint constellation lines that light on hover, backdrop starfield, glass "stellar dossier" on hover/focus, click/Enter opens the case study via __morphFrom/__openCase, keyboard + vrail-dot + sr-only access). Dolly/meteorite treatment removed for #work; Path/arch/hero/modal untouched. | v11.1 starmap : architecture graph reskinned as an interstellar constellation chart (layered stars w/ glow halos + twinkle, diffraction spikes on in-production anchors, faint constellation lines, soft traveling light-pulses, backdrop starfield, drifting nebula tint replacing the scan sweep, near-black panel) — all behaviors preserved. | v11.0 cosmos-real : photographic pass — ACES+sRGB tone mapping, white-weighted desaturated stellar palette + heavier size-skew, reduced/slowed twinkle, spikes only on brightest stars; cut additive glow (neb/galaxy/core), tight nucleus; markedly slower rotations/drift; rarer/quicker meteors; filamentary multi-layer muted nebulae; tighter higher-contrast galaxy; finer Jupiter banding + limb darkening + near-black night side. Asteroid belt, flares, comet click, cursor-gravity intact. -->
+<!-- Pratik Cholkhane portfolio | v13.5 timeline-fix : corrected the career timeline to the real dates — B.S. Mechanical Engineering 2016–2020, Total Tools 2020–2023 (unchanged), M.S. Engineering Management Fall 2023–May 2025, BI Analyst at UMBC DoIT 2024–Mar 2026 (started as a graduate assistantship, continued post-graduation; noted in the card body, "(Graduate Assistantship)" dropped from the org line), Welspun from Mar 2026 (unchanged). Education card idx now 2016—2025 with per-degree years; the comet trajectory\u2019s Education node relabelled "M.S. 2023" (the move to the US), keeping the trail chronological: 2017 → 2020 → M.S. 2023 → 2024 → Present. | v13.4 path-no-tiles : removed the rectangular card tiles from the pinned Path view — #track2 .drum/.vrail/.stack-glow hidden on desktop (the dolly still runs hidden underneath as the scroll-progress engine; untouched), and the active role now renders as a free-floating borderless readout (.path-info: mono date/tag line, display title, org, body — pure text with a dark halo over the cosmos, no box) that cross-fades as the comet moves between perihelion nodes. Hint text updated to “travel the trajectory”. Mobile <=720px keeps the readable stacked cards (readout + canvas hidden there); reduced-motion updates the readout + a static frame on scroll. | v13.3 path-comet : Path section reskinned as a COMET TRAJECTORY TIMELINE — a 2D canvas layer (#pathComet, absolute inside #track2 .pin, z-index 0, pointer-events none) draws one Catmull-Rom comet arc sweeping from the 2017 internships (tail, lower-left) up to a bright glowing head with diffraction spikes at Welspun · Present (upper-right). Each role is a perihelion node with a date tick (2017 / 2020 / M.S.·B.S. / 2024 / Present); the dolly\u2019s own scroll progress selects the active node (pulsing ring, white label) and a tapered additive ribbon lights the trail from the tail up to it, with a slow travelling pulse along the lit history. Ghost full trajectory stays faint. Additive + isolated: dolly cards/keyboard/vrail untouched, canvas skips all work when the section is offscreen, hidden in the <=720px static stack, reduced-motion draws one static full-lit frame with no loop. | v13.2 jupiter-real : rebuilt the procedural Jupiter for photographic realism — replaced the regular sinusoidal banding with a real belt/zone latitude profile (gaussian NEB/SEB/NTB/STB/NNTB/SSTB/EB belts over bright cream zones, precomputed lookup table), shear-warped wavy scalloped belt edges (waviness scales with belt strength), blue-grey festoons trailing off the NEB into the Equatorial Zone, an integrated Great Red Spot (pale hollow collar where the SEB diverts around it + swirl-sampled internal spiral striations, salmon core, darker vortex rim) instead of the pasted radial gradient, deterministic brown barges in the NEB and rimmed white ovals along the STB, mottled blue-grey polar hoods where banding fades, lighter desaturation, and bumpScale 0.9->0.35 (cloud tops are smooth). Same 1024x512 canvas cost, mesh/lighting/limb-darkening/flares untouched. | v13.1 time-of-day : added a subtle time-of-day adaptive tint to the cosmos — the sunlight colour/intensity on Jupiter, the ambient light, and the deep-space backdrop blend between keyframed palettes (pre-dawn violet 4:30 / dawn rose-amber 6:30 / cool bright day 9:00 / neutral 15:30 / amber dusk 18:00 / twilight violet 20:00 / deep night) based on the visitor\u2019s local clock, smoothly interpolated and refreshed each minute so it drifts if the tab stays open. Only light colours + clear colour change; nebulae, star palette, Jupiter texture, galaxy, orbit/zoom and all behavior untouched; night is the exact pre-existing look. | v13.0 voice-plain : dialed the copy back from marketing-speak to plain, understated technical language per feedback that it read AI-generated — removed "work backward / bias for shipping / dove deep / instrumented / earn trust / reusable mechanisms / from the ground up" and leaned on concrete terms (data pipelines, data architecture, AI analytics, digital twins, geospatial simulation, reconciliation, rule engines). Facts unchanged; case-study "Impact" label kept. | v12.9 voice-bigtech : rewrote the marketing copy (meta, hero eyebrow/lead, About paragraphs, Systems card summaries, Architecture lead, Path role descriptions, footer tagline) into the crisp, outcome-and-ownership register used at Apple/Amazon/Tesla — strong action verbs (own, ship, drove, instrumented, dove deep), scale/impact framing, and keywords (work backward, bias for action, source of truth, mechanisms, from the ground up, data-driven, earn trust) — keeping every claim truthful. Case-study bodies kept (already Problem/Constraint/Built structure); "Outcome" label elevated to "Impact". No layout/behavior changes. | v12.8 scrub-plant-code : removed the internal plant code from everywhere it appeared — meta description, the boot wordmark, the hero wordmark, the About paragraph, the Path role location, and the AI-assistant system prompt — keeping "Welspun" and "Little Rock, AR" so the copy still reads naturally. No other content/behavior changes. | v12.7 statfix : the stat-band numbers (6 storage yards / 34 fleet assets / 27% FG tonnage) were stuck at 0 when the IntersectionObserver count-up did not fire; rewrote it to be robust — animates on scroll-into-view via IO, snaps to final instantly under prefers-reduced-motion, and adds a scroll/resize/on-load viewport fallback (done-guarded) so the values always reach their targets and never stay at 0. | v12.6 resume-contact : added a downloadable résumé (Pratik_Cholkhane_Resume.pdf, linked relatively so it works on GitHub Pages when uploaded beside index.html) via an always-visible Resume button in the nav + a link in the footer; turned the footer into a contact row with clickable email (mailto:pratikvc18@gmail.com) and phone (tel:+15712509016), and filled the previously-empty GitHub link (github.com/pratikvc18, inferred from the resume portfolio URL). foot-links now wraps on small screens. Content/layout-only. | v12.5 orbit-cosmos : made the fixed cosmos background interactive like the hero scene — drag empty background to orbit the camera around the look-point (Jupiter revolves across the view; the starfield/galaxy re-angle), with a little release-inertia; clamped yaw +/-1.25rad, pitch +/-0.5rad. Zoom is done via field-of-view (so the camera never flies into Jupiter): pinch on touch, Alt/Cmd + wheel on desktop, and page-scroll still gently zooms/dollies in. Drag is hooked on window and only starts over empty background (never over links/cards/buttons/canvases/panels), so every click, scroll, and the star cursor keep working; text-select suppressed only mid-drag. Jupiter/galaxy self-rotation, comet, flares, hover labels unchanged. | v12.4 comet-smooth : the pointer tail now curves smoothly instead of showing straight facets on tight motion (spirals/loops). The eased-head path is resampled with a Catmull-Rom spline into a dense centerline (6 subdivisions/segment) before the tapered glow+core ribbon is filled, so the streak follows a true curve with no polygonal edges. Head size, taper, colours, click sparkle burst, hover, touch, reduced-motion all unchanged. | v12.3 comet-pointer-fix : eliminated the beading/dots in the pointer tail by replacing the per-segment round-capped strokes (whose caps poked out where segment widths changed) with a single filled tapered ribbon per pass (glow + core), built from perpendicular offsets along the eased-head path with a head->tail alpha gradient — fully continuous, no caps. Also enlarged the cursor slightly: head glow 33->40, diffraction spikes 26->31, nucleus 2.7->3.3, tail a touch wider. All behavior (click sparkle burst, hover-grow, touch, reduced-motion, magnetic nav pull) unchanged. | v12.2 comet-pointer : reworked the star pointer into a smooth continuous shooting star. Replaced the speed-gated scatter-particle trail (0 dots when slow, up to 3 splayed dots when fast, so it read as broken/choppy in motion) with a tapered additive comet tail drawn as a continuous stroke along its recent eased path (26-frame history; warm-white head to cool-blue tail; soft-glow pass + bright-core pass; tail retracts smoothly on stop). Head tracks more responsively (ease .2 to .35), smears slightly along its velocity, and its diffraction spikes fade as it accelerates; click/tap sparkle burst, hover-grow, touch, and reduced-motion (static star, no trail) all preserved. Single canvas, one rAF. | v12.1 stack-below-about : moved the Stack & Tooling / Certifications card out of the About right-hand grid column to a full-width block directly below the About paragraphs, left-aligned (About text now a single readable left column, max-width 700px; card matches). It keeps its existing `.reveal` class, so it fades/rises/unblurs on scroll with the exact same staggered transition as the System Architecture stage. Layout-only; content/animation/behavior unchanged. | v12.0 star-ignition boot : replaced the terminal boot screen (log lines / #bootLog box / segmented #bootBar) with a cinematic 2D-canvas STAR IGNITION — a faint central point that brightens, grows a soft radial glow, shimmers, and extends 4-point diffraction spikes as load progresses (star charge = progress), then a gentle bloom flash dissolves to the hero. Same wiring preserved: finish() still adds `done` to #boot + unlocks scroll; click/tap skips to ignition; ~4200ms safety timeout; prefers-reduced-motion shows a static star then finishes. Single 2D canvas, one rAF cancelled on finish; no Three.js/WebGL in the boot; the done-class handoff to the headline decode is untouched. | v11.8 responsive : cross-device layout pass (phone/tablet/desktop) — fluid clamp() spacing, 100vh->svh/dvh (fixes iOS viewport jump), <=720px de-pins the Path career dolly into a static single-column stack of the same cards + reveals detail without hover, hides inline nav-links <=600px (command palette remains), >=44px touch targets, and a --vh var + orientationchange->resize so hero/cosmos/star-chart/arch/cursor canvases recompute on rotate. Content/behavior/colors unchanged. | v11.7 : refined hero headline ("operational intelligence" positioning, dropped "heavy industry"); expanded the UMBC Path entry with BI-analyst detail (Tableau, SSRS/REX->Tableau modernization, LOD/parameter/blend logic, SQL Server + Redshift data validation, university systems, end-to-end ticket ownership) + DoIT/assistantship context. | v11.6 : expanded the Yard Digital Twin case study with a productionization story (Taking it live: hosting behind Welspun SSO, a persistence/memory layer, scheduled live-data refresh, Azure App Service deploy + single-tenant Entra ID; plus the upstream source-vs-system-of-record data-fork) and added deployment tech tags. | v11.5 : enlarged the star pointer slightly (glow 26->33, spikes 22->28, core 2.0->2.7); removed the cosmos asteroid/meteoroid belt (the chunky low-poly rocks that read as unrealistic) + its per-frame updates and now-unused noise helpers; near-star cursor-gravity, lens flares, comet click, Jupiter, galaxy all intact. | v11.4 star-pointer : custom cursor replaced by a single-canvas interstellar star pointer (eased core+glow+diffraction spikes matching the cosmos/constellation language, speed-scaled warm->cool comet trail, hover grows/intensifies over interactive targets, click/tap twinkle burst). Works on touch (appears on touchstart, follows, fades after touchend); overlay is pointer-events:none, passive touch, one rAF. Old .cur-ring/.cur-dot + .cursor-light retired; OS cursor hidden on fine pointers (inputs keep text). Reduced-motion = static star, no trail. | v11.3 arch-blend : System Architecture section dissolved into the shared cosmos — .arch-stage panel made transparent w/ a hairline border, the #archCanvas faux-sky (own starfield + nebula tint) removed so the fixed #cosmos shows through, soft dark halos added behind node labels + legend for legibility. Glows still use lighter compositing then reset; all graph behavior unchanged. | v11.2 systems-starmap : "Systems in Production" rebuilt as a navigable 2D-canvas constellation (six hand-placed stars w/ glow halos + twinkle + live-anchor spikes, faint constellation lines that light on hover, backdrop starfield, glass "stellar dossier" on hover/focus, click/Enter opens the case study via __morphFrom/__openCase, keyboard + vrail-dot + sr-only access). Dolly/meteorite treatment removed for #work; Path/arch/hero/modal untouched. | v11.1 starmap : architecture graph reskinned as an interstellar constellation chart (layered stars w/ glow halos + twinkle, diffraction spikes on in-production anchors, faint constellation lines, soft traveling light-pulses, backdrop starfield, drifting nebula tint replacing the scan sweep, near-black panel) — all behaviors preserved. | v11.0 cosmos-real : photographic pass — ACES+sRGB tone mapping, white-weighted desaturated stellar palette + heavier size-skew, reduced/slowed twinkle, spikes only on brightest stars; cut additive glow (neb/galaxy/core), tight nucleus; markedly slower rotations/drift; rarer/quicker meteors; filamentary multi-layer muted nebulae; tighter higher-contrast galaxy; finer Jupiter banding + limb darkening + near-black night side. Asteroid belt, flares, comet click, cursor-gravity intact. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -120,6 +120,16 @@
   @keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}30%{opacity:1}70%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
   /* Systems in Production -> 2D star chart (replaces the dolly drum) */
   #track .vstage{width:min(1120px,94vw);height:min(460px,62svh);perspective:none}
+  .path-comet{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+  /* Path: cards replaced by a free-floating role readout (no tiles); the drum still drives scroll progress underneath */
+  #track2 .drum,#track2 .vrail,#track2 .stack-glow{display:none}
+  .path-info{position:absolute;left:50%;top:19%;transform:translateX(-50%);width:min(620px,86vw);z-index:1;pointer-events:none;
+    text-shadow:0 1px 2px rgba(0,0,0,.9),0 0 8px rgba(0,0,0,.6);opacity:1;transition:opacity .32s ease,transform .32s ease}
+  .path-info.fade{opacity:0;transform:translateX(-50%) translateY(10px)}
+  .pi-idx{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px}
+  .pi-title{font-family:var(--display);font-weight:600;font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.25;margin-bottom:6px}
+  .pi-org{color:var(--muted);font-size:.98rem;margin-bottom:14px}
+  .pi-body{color:var(--muted);font-size:.92rem;line-height:1.75;max-width:60ch}
   #track .drum,#track .stack-glow{display:none!important}
   #track .chint{bottom:26px}
   .sky-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:none;border-radius:18px}
@@ -438,6 +448,10 @@
     #track2 .tile-c .card{height:auto}
     #track2 .card-more{grid-template-rows:1fr;opacity:1;margin-top:16px}
     #track2 .vrail,#track2 .chint{display:none}
+    #track2 .path-comet{display:none}
+    #track2 .path-info{display:none}
+    #track2 .drum{display:flex}
+    #track2 .stack-glow{display:none}
     /* Systems star-chart rail: >=44px touch hit area without changing its look */
     #track .vrail .vdot::after{content:"";position:absolute;inset:-17px}
   }
@@ -609,6 +623,7 @@
     <section id="path" class="work">
       <div class="track" id="track2">
         <div class="pin">
+          <canvas class="path-comet" id="pathComet" aria-hidden="true"></canvas>
           <div class="sec-head reveal"><span class="sec-num">04</span><span class="sec-title">Path</span><span class="sec-line"></span></div>
           <div class="vstage">
             <div class="stack-glow"></div>
@@ -623,10 +638,10 @@
         </div>
         <div class="tile-c" data-label="UMBC">
         <article class="card">
-          <span class="idx">2024 &mdash; 2026</span>
+          <span class="idx">2024 &mdash; Mar 2026</span>
           <h3>Business Intelligence Analyst &middot; Project Coordinator</h3>
-          <p>University of Maryland, Baltimore County &middot; DoIT (Graduate Assistantship)</p>
-          <div class="card-more"><div><p>Business Systems Group, DoIT &mdash; built and maintained Tableau dashboards and led the modernization of legacy SSRS (REX) reports into self-service Tableau workbooks. Wrote complex calculations &mdash; LOD expressions for deduplication, parameter-driven conditional logic, and blend/join logic to faithfully replicate legacy report behavior &mdash; and ran data validation across SQL Server and Amazon Redshift, reconciling discrepancies between source data and dashboard output. Built reporting across university systems &mdash; RT ticketing, ImageNow document management, and course registration &mdash; for enrollment, registration, and operations, owning modernization tickets end to end: requirements, development, testing, and stakeholder sign-off. Tableau &middot; SQL Server &middot; Amazon Redshift &middot; SSRS.</p></div></div>
+          <p>University of Maryland, Baltimore County &middot; DoIT</p>
+          <div class="card-more"><div><p>Started as a graduate assistantship during my M.S. and continued as a BI analyst after graduating (May 2025) through March 2026. Business Systems Group, DoIT &mdash; built and maintained Tableau dashboards and led the modernization of legacy SSRS (REX) reports into self-service Tableau workbooks. Wrote complex calculations &mdash; LOD expressions for deduplication, parameter-driven conditional logic, and blend/join logic to faithfully replicate legacy report behavior &mdash; and ran data validation across SQL Server and Amazon Redshift, reconciling discrepancies between source data and dashboard output. Built reporting across university systems &mdash; RT ticketing, ImageNow document management, and course registration &mdash; for enrollment, registration, and operations, owning modernization tickets end to end: requirements, development, testing, and stakeholder sign-off. Tableau &middot; SQL Server &middot; Amazon Redshift &middot; SSRS.</p></div></div>
         </article>
         </div>
         <div class="tile-c" data-label="TOTAL">
@@ -639,9 +654,9 @@
         </div>
         <div class="tile-c" data-label="Education">
         <article class="card has-tag">
-          <span class="idx">M.S. &middot; B.S.</span><span class="tag">Education</span>
+          <span class="idx">2016 &mdash; 2025</span><span class="tag">Education</span>
           <h3>Engineering Management &amp; Mechanical Engineering</h3>
-          <p>M.S. Engineering Management, UMBC &middot; B.S. Mechanical Engineering</p>
+          <p>M.S. Engineering Management, UMBC (Fall 2023 &mdash; May 2025) &middot; B.S. Mechanical Engineering (2016 &mdash; 2020)</p>
           <div class="card-more"><div><p>A mechanical-engineering foundation extended into engineering management and analytics &mdash; the bridge from the floor to the systems above it.</p></div></div>
         </article>
         </div>
@@ -656,7 +671,7 @@
             </div>
           </div>
           <div class="vrail" id="vrail2"></div>
-          <div class="chint"><span class="wheel"></span>Scroll &mdash; roles glide corner to corner</div>
+          <div class="chint"><span class="wheel"></span>Scroll &mdash; travel the trajectory</div>
         </div>
       </div>
     </section>
@@ -1242,6 +1257,127 @@
   }
   /* Systems now renders as a 2D star chart (IIFE below); initFlow no longer drives #work, so no meteorite baking/burst here. */
   initFlow(document.getElementById('track2'),document.getElementById('drum2'),document.getElementById('vrail2'),{cue:false,openModal:false,mode:'trace'});
+
+  /* ===== Path -> comet trajectory timeline (additive + isolated; visual stage only).
+     One comet arc from the 2017 internships (tail, lower-left) to the bright head at
+     Welspun · Present (upper-right). Perihelion node per role with a date tick; the
+     dolly's own scroll progress drives which node is active and how much of the trail
+     is lit. Cards/keyboard/mobile-stack behavior untouched; canvas sits behind them. ===== */
+  (function(){
+    const track=document.getElementById('track2'),cv=document.getElementById('pathComet');
+    if(!track||!cv)return;
+    const ctx=cv.getContext('2d');if(!ctx)return;
+    const tilesP=[...document.querySelectorAll('#drum2 .tile-c')];
+    const N=tilesP.length||5;
+    // floating role readout (replaces the card tiles in the pinned view)
+    const DATA=tilesP.map(function(tl){const c=tl.querySelector('.card')||tl;
+      const q=function(sel){const e=c.querySelector(sel);return e?e:null;};
+      const idx=q('.idx'),tag=q('.tag'),h3=q('h3');
+      let org=null;const ps=c.querySelectorAll(':scope > p');if(ps.length)org=ps[0];
+      const body=q('.card-more p');
+      return {idx:idx?idx.innerHTML:'',tag:tag?tag.textContent:'',title:h3?h3.innerHTML:'',org:org?org.innerHTML:'',body:body?body.innerHTML:''};});
+    const info=document.createElement('div');info.className='path-info';
+    const pin=track.querySelector('.pin');if(pin)pin.appendChild(info);
+    let shown=-1,swapTO=null;
+    function setInfo(a){
+      if(a===shown||!DATA[a])return;shown=a;const d=DATA[a];
+      info.classList.add('fade');clearTimeout(swapTO);
+      swapTO=setTimeout(function(){
+        info.innerHTML='<div class="pi-idx">'+d.idx+(d.tag?' &nbsp;·&nbsp; '+d.tag:'')+'</div>'
+          +'<h3 class="pi-title">'+d.title+'</h3>'
+          +'<div class="pi-org">'+d.org+'</div>'
+          +'<div class="pi-body">'+d.body+'</div>';
+        info.classList.remove('fade');
+      },190);
+    }
+    const LBL=['Present','2024','2020','M.S. 2023','2017'];       // tile order newest -> oldest
+    const reduceM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let W=0,H=0,PTS=[],SEG=[],TOTL=0,NODE=[],lit=0,raf=0;
+    const ANCH=[[0.07,0.72],[0.27,0.84],[0.50,0.86],[0.76,0.60],[0.92,0.20]];   // oldest -> newest sweep (low arc rising to top-right, clear of the centered cards)
+    function build(){
+      const P=ANCH.map(a=>[a[0]*W,a[1]*H]);PTS=[];NODE=[0];const S=18;
+      for(let i=0;i<P.length-1;i++){const p0=P[i>0?i-1:0],p1=P[i],p2=P[i+1],p3=P[i<P.length-2?i+2:P.length-1];
+        for(let j=(i===0?0:1);j<=S;j++){const t=j/S,t2=t*t,t3=t2*t;
+          PTS.push([0.5*((2*p1[0])+(-p0[0]+p2[0])*t+(2*p0[0]-5*p1[0]+4*p2[0]-p3[0])*t2+(-p0[0]+3*p1[0]-3*p2[0]+p3[0])*t3),
+                    0.5*((2*p1[1])+(-p0[1]+p2[1])*t+(2*p0[1]-5*p1[1]+4*p2[1]-p3[1])*t2+(-p0[1]+3*p1[1]-3*p2[1]+p3[1])*t3)]);}
+        NODE.push(PTS.length-1);}
+      SEG=[0];TOTL=0;
+      for(let i=1;i<PTS.length;i++){TOTL+=Math.hypot(PTS[i][0]-PTS[i-1][0],PTS[i][1]-PTS[i-1][1]);SEG.push(TOTL);}
+    }
+    function idxAtLen(L){let lo=0,hi=SEG.length-1;while(lo<hi){const m=(lo+hi)>>1;if(SEG[m]<L)lo=m+1;else hi=m;}return lo;}
+    function progress(){const r=track.getBoundingClientRect(),span=r.height-innerHeight;return span>0?Math.min(1,Math.max(0,(-r.top)/span)):0;}
+    function ribbon(iEnd,alpha,wHead){
+      if(iEnd<2)return;
+      const Lx=[],Ly=[],Rx=[],Ry=[];
+      for(let i=0;i<=iEnd;i++){const f=i/iEnd,a=PTS[i>0?i-1:0],b=PTS[i<iEnd?i+1:iEnd];
+        let dx=a[0]-b[0],dy=a[1]-b[1];const dl=Math.hypot(dx,dy)||1;dx/=dl;dy/=dl;
+        const nx=-dy,ny=dx,hw=0.5+wHead*f*f;
+        Lx[i]=PTS[i][0]+nx*hw;Ly[i]=PTS[i][1]+ny*hw;Rx[i]=PTS[i][0]-nx*hw;Ry[i]=PTS[i][1]-ny*hw;}
+      ctx.beginPath();ctx.moveTo(Lx[0],Ly[0]);
+      for(let i=1;i<=iEnd;i++)ctx.lineTo(Lx[i],Ly[i]);
+      for(let i=iEnd;i>=0;i--)ctx.lineTo(Rx[i],Ry[i]);
+      ctx.closePath();
+      const g=ctx.createLinearGradient(PTS[0][0],PTS[0][1],PTS[iEnd][0],PTS[iEnd][1]);
+      g.addColorStop(0,'rgba(150,180,255,0)');
+      g.addColorStop(0.5,'rgba(170,196,255,'+(alpha*0.5).toFixed(3)+')');
+      g.addColorStop(1,'rgba(255,240,214,'+alpha.toFixed(3)+')');
+      ctx.fillStyle=g;ctx.fill();
+    }
+    function draw(ts,anim){
+      const p=progress(),a=Math.round(p*(N-1)),t=ts*0.001;
+      setInfo(a);
+      const target=SEG[NODE[Math.max(0,N-1-a)]]||TOTL;
+      if(anim)lit+=(target-lit)*0.08;else lit=TOTL;
+      ctx.clearRect(0,0,W,H);
+      ctx.save();ctx.globalCompositeOperation='lighter';
+      // faint full trajectory (the path not yet travelled stays ghosted)
+      ctx.strokeStyle='rgba(150,175,230,0.10)';ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(PTS[0][0],PTS[0][1]);for(let i=1;i<PTS.length;i++)ctx.lineTo(PTS[i][0],PTS[i][1]);ctx.stroke();
+      // lit tapered ribbon up to the active role
+      const iEnd=idxAtLen(lit);
+      ribbon(iEnd,0.32+(anim?0.05*Math.sin(t*1.7):0),3.4);
+      // travelling pulse along the lit history
+      if(anim&&iEnd>4){const pl=((t*0.10)%1)*lit,pp=PTS[idxAtLen(pl)];
+        const pg=ctx.createRadialGradient(pp[0],pp[1],0,pp[0],pp[1],7);pg.addColorStop(0,'rgba(255,250,235,0.45)');pg.addColorStop(1,'rgba(200,220,255,0)');
+        ctx.fillStyle=pg;ctx.beginPath();ctx.arc(pp[0],pp[1],7,0,7);ctx.fill();}
+      // perihelion nodes + date ticks
+      ctx.font='600 10px JetBrains Mono, ui-monospace, monospace';ctx.textAlign='center';ctx.textBaseline='bottom';
+      for(let k=0;k<NODE.length;k++){const pt=PTS[NODE[k]],tileIdx=N-1-k,act=tileIdx===a,on=SEG[NODE[k]]<=lit+1;
+        const ga=act?0.9:(on?0.5:0.26);
+        const g2=ctx.createRadialGradient(pt[0],pt[1],0,pt[0],pt[1],(act?5:2.6)*4);
+        g2.addColorStop(0,'rgba(255,255,255,'+(ga*0.8).toFixed(3)+')');g2.addColorStop(0.35,'rgba(190,208,244,'+(ga*0.35).toFixed(3)+')');g2.addColorStop(1,'rgba(190,208,244,0)');
+        ctx.fillStyle=g2;ctx.beginPath();ctx.arc(pt[0],pt[1],(act?5:2.6)*4,0,7);ctx.fill();
+        ctx.beginPath();ctx.arc(pt[0],pt[1],act?2.6:1.5,0,7);ctx.fillStyle='rgba(255,255,255,'+(act?0.95:(on?0.7:0.4)).toFixed(3)+')';ctx.fill();
+        if(act&&anim){const pr=6.5+2.2*Math.sin(t*2.2);ctx.strokeStyle='rgba(255,255,255,0.32)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(pt[0],pt[1],pr,0,7);ctx.stroke();}
+        ctx.shadowColor='rgba(0,0,0,.85)';ctx.shadowBlur=6;ctx.shadowOffsetY=1;
+        ctx.fillStyle=act?'rgba(255,255,255,0.95)':'rgba(176,188,210,'+(on?0.8:0.5)+')';
+        ctx.fillText(LBL[tileIdx]||'',pt[0],pt[1]-12);
+        ctx.shadowBlur=0;ctx.shadowOffsetY=0;ctx.shadowColor='transparent';}
+      // comet head — Welspun · Present
+      const hp=PTS[PTS.length-1],ha=0.7+(anim?0.18*Math.sin(t*1.3):0)+(a===0?0.28:0);
+      const hg=ctx.createRadialGradient(hp[0],hp[1],0,hp[0],hp[1],26);
+      hg.addColorStop(0,'rgba(255,255,255,'+(0.5*ha).toFixed(3)+')');hg.addColorStop(0.3,'rgba(210,224,255,'+(0.3*ha).toFixed(3)+')');hg.addColorStop(1,'rgba(210,224,255,0)');
+      ctx.fillStyle=hg;ctx.beginPath();ctx.arc(hp[0],hp[1],26,0,7);ctx.fill();
+      const sl=20;[[1,0],[0,1]].forEach(function(d){const lg=ctx.createLinearGradient(hp[0]-d[0]*sl,hp[1]-d[1]*sl,hp[0]+d[0]*sl,hp[1]+d[1]*sl);
+        lg.addColorStop(0,'rgba(210,224,255,0)');lg.addColorStop(0.5,'rgba(255,255,255,'+(0.5*ha).toFixed(3)+')');lg.addColorStop(1,'rgba(210,224,255,0)');
+        ctx.strokeStyle=lg;ctx.lineWidth=1.1;ctx.beginPath();ctx.moveTo(hp[0]-d[0]*sl,hp[1]-d[1]*sl);ctx.lineTo(hp[0]+d[0]*sl,hp[1]+d[1]*sl);ctx.stroke();});
+      ctx.restore();
+      ctx.beginPath();ctx.arc(hp[0],hp[1],2.4,0,7);ctx.fillStyle='rgba(255,255,255,0.95)';ctx.fill();
+    }
+    function frame(ts){raf=requestAnimationFrame(frame);
+      if(document.hidden)return;
+      const r=track.getBoundingClientRect();
+      if(r.bottom<-40||r.top>innerHeight+40)return;   // section offscreen: skip all work
+      draw(ts,true);
+    }
+    function resize(){const r=cv.getBoundingClientRect();if(r.width<5)return;
+      const d=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;
+      cv.width=(W*d)|0;cv.height=(H*d)|0;ctx.setTransform(d,0,0,d,0,0);
+      build();if(reduceM)draw(0,false);}
+    resize();addEventListener('resize',resize,{passive:true});
+    if(!reduceM)raf=requestAnimationFrame(frame);
+    else{setInfo(Math.round(progress()*(N-1)));addEventListener('scroll',function(){draw(0,false);},{passive:true});}
+  })();
   /* ===== Systems in Production -> navigable 2D star chart (rhymes with the architecture constellation) ===== */
   (function(){
     const cv=document.getElementById('skyCanvas'); if(!cv) return;
@@ -1972,44 +2108,110 @@
     nebField(160,260,-1300,0x6f5446,4,560,520,0.03);    // warm dust (muted)
 
     // ---- Jupiter (photographic banded gas giant, lit) ----
-    scene.add(new THREE.AmbientLight(0x0a0e18,0.18));
+    const amb=new THREE.AmbientLight(0x0a0e18,0.18);scene.add(amb);
     const sun=new THREE.DirectionalLight(0xfff2da,2.0);sun.position.set(-0.35,0.26,1.0);scene.add(sun);
     const fill=new THREE.DirectionalLight(0x33425f,0.08);fill.position.set(0.8,-0.2,0.4);scene.add(fill);
+
+    // ---- time-of-day adaptive tint (subtle): sunlight colour/intensity, ambient, and the space backdrop
+    //      blend between keyframed palettes on the visitor's local clock; refreshed each minute ----
+    (function(){
+      const KEYS=[                             // [hour, sun hex, sun intensity, ambient hex, clear hex]
+        [0,  0xfff2da, 2.00, 0x0a0e18, 0x02030a],   // deep night (baseline look)
+        [4.5,0xffe6cf, 1.95, 0x100d1a, 0x03030e],   // pre-dawn violet
+        [6.5,0xffcda6, 2.15, 0x191218, 0x060410],   // dawn — rose-amber warmth
+        [9,  0xfff7e8, 2.20, 0x0c1220, 0x02040c],   // day — cooler, a touch brighter
+        [15.5,0xfff2da,2.10, 0x0b0f1a, 0x02030a],   // late afternoon — neutral
+        [18, 0xffc290, 2.20, 0x181016, 0x060309],   // dusk — amber
+        [20, 0xf5dcca, 2.00, 0x0f0e1c, 0x030310],   // twilight — violet
+        [24, 0xfff2da, 2.00, 0x0a0e18, 0x02030a]];  // wraps to night
+      const cs=new THREE.Color(),ca=new THREE.Color(),cc=new THREE.Color(),tmp=new THREE.Color();
+      function apply(){
+        const d=new Date(),h=d.getHours()+d.getMinutes()/60;
+        let i=0;while(i<KEYS.length-2&&h>=KEYS[i+1][0])i++;
+        const A=KEYS[i],B=KEYS[i+1],t=Math.min(1,Math.max(0,(h-A[0])/(B[0]-A[0]||1)));
+        cs.setHex(A[1]).lerp(tmp.setHex(B[1]),t);
+        ca.setHex(A[3]).lerp(tmp.setHex(B[3]),t);
+        cc.setHex(A[4]).lerp(tmp.setHex(B[4]),t);
+        sun.color.copy(cs);sun.intensity=A[2]+(B[2]-A[2])*t;
+        amb.color.copy(ca);
+        renderer.setClearColor(cc,1);
+      }
+      apply();setInterval(apply,60000);
+    })();
     function jupiterTex(){
+      // Photographic Jupiter: real belt/zone latitude profile (gaussian belts over bright zones),
+      // shear-warped wavy belt edges, EZ festoons, integrated swirling Great Red Spot with pale hollow,
+      // brown barges, white ovals, mottled blue-grey poles.
       const w=1024,h=512,cv2=document.createElement('canvas');cv2.width=w;cv2.height=h;const x=cv2.getContext('2d');
       function hash(a,b){let n=(a*374761393+b*668265263)|0;n=((n^(n>>13))*1274126177)|0;return ((n^(n>>16))>>>0)/4294967295;}
       function vn(a,b){const xi=Math.floor(a),yi=Math.floor(b),xf=a-xi,yf=b-yi,u=xf*xf*(3-2*xf),v=yf*yf*(3-2*yf);const tl=hash(xi,yi),tr=hash(xi+1,yi),bl=hash(xi,yi+1),br=hash(xi+1,yi+1);return (tl*(1-u)+tr*u)*(1-v)+(bl*(1-u)+br*u)*v;}
       function fbm(a,b){let s=0,amp=0.5,f=1;for(let i=0;i<6;i++){s+=amp*vn(a*f,b*f);f*=2;amp*=0.5;}return s;}
-      // softer, desaturated, warm palette (low contrast)
-      const STOPS=[[0,[122,95,68]],[0.2,[157,124,86]],[0.42,[186,157,114]],[0.62,[207,182,142]],[0.8,[222,203,170]],[1,[232,219,196]]];
-      function grad(t){for(let i=1;i<STOPS.length;i++){if(t<=STOPS[i][0]){const a=STOPS[i-1],b=STOPS[i],k=(t-a[0])/(b[0]-a[0]);return [a[1][0]+(b[1][0]-a[1][0])*k,a[1][1]+(b[1][1]-a[1][1])*k,a[1][2]+(b[1][2]-a[1][2])*k];}}return STOPS[5][1];}
+      function gsn(v,c,sd){const d=(v-c)/sd;return Math.exp(-d*d);}
+      // ---- real belt/zone latitude profile (0=N pole .. 1=S pole), precomputed as a lookup table ----
+      const BELTS=[[0.400,0.032,0.95],[0.585,0.034,0.90],[0.300,0.017,0.55],[0.688,0.016,0.50],[0.225,0.012,0.34],[0.760,0.012,0.32],[0.502,0.011,0.22],[0.150,0.013,0.22],[0.835,0.013,0.20]]; // NEB,SEB,NTB,STB,NNTB,SSTB,EB,N/S high-lat
+      const PROF=new Float32Array(2048);
+      for(let i=0;i<2048;i++){const v=i/2047;let b=0;for(let k=0;k<BELTS.length;k++)b+=BELTS[k][2]*gsn(v,BELTS[k][0],BELTS[k][1]);PROF[i]=Math.min(1,b);}
+      const prof=v=>PROF[Math.max(0,Math.min(2047,(v*2047)|0))];
+      // palette
+      const ZONE=[228,216,196],BELT=[158,102,66],CORE=[126,78,52],FEST=[142,150,164],POLE=[138,140,150];
+      const mix=(A,B,t)=>[A[0]+(B[0]-A[0])*t,A[1]+(B[1]-A[1])*t,A[2]+(B[2]-A[2])*t];
+      // Great Red Spot params (texture-space fractions)
+      const GU=0.66,GV=0.612,GRU=0.075,GRV=0.047;
       const img=x.createImageData(w,h),D=img.data;
-      for(let y=0;y<h;y++){const lat=y/h,pole=Math.min(lat,1-lat),pf=Math.max(0,Math.min(1,pole/0.16));
-        for(let xx=0;xx<w;xx++){const lon=xx/w*6.283185,c2=Math.cos(lon),s2=Math.sin(lon);
-          const nA=fbm((c2*1.4+1.4)*3.0+1.0,(s2*1.4+1.4)*3.0+lat*8.0);      // large undulation
-          const nB=fbm((c2*1.4+1.4)*8.0+7.0,(s2*1.4+1.4)*8.0+lat*22.0);     // mid turbulence
-          const nC=fbm((c2*1.4+1.4)*4.0+13.0,(s2*1.4+1.4)*4.0+lat*96.0);    // fine horizontal filaments
-          const llat=lat+(nA-0.5)*0.045;
-          let band=0.5+0.22*Math.sin(llat*Math.PI*16)+0.11*Math.sin(llat*Math.PI*9+0.6)+0.06*Math.sin(llat*Math.PI*27-1.0);
-          band+=(nB-0.5)*0.13+(nC-0.5)*0.10;band=Math.max(0,Math.min(1,band));
-          const col=grad(band),br=0.9+(nC-0.5)*0.14+(nB-0.5)*0.08;
+      for(let y=0;y<h;y++){
+        const v=y/h,pole=Math.min(v,1-v),pf=Math.max(0,Math.min(1,pole/0.15));   // pf: 0 at pole -> 1 past cap
+        for(let xx=0;xx<w;xx++){
+          const u=xx/w,lon=u*6.283185,c2=Math.cos(lon),s2=Math.sin(lon);
+          const nA=fbm((c2*1.4+1.4)*2.6+1.0,(s2*1.4+1.4)*2.6+v*7.0);            // large undulation
+          const nB=fbm((c2*1.4+1.4)*7.5+7.0,(s2*1.4+1.4)*7.5+v*20.0);           // mid turbulence
+          const nC=fbm((c2*1.4+1.4)*4.0+13.0,(s2*1.4+1.4)*4.0+v*110.0);         // fine zonal filaments
+          // shear-warped latitude: belts get wavy, scalloped edges (waviness grows with belt strength)
+          const b0=prof(v);
+          const llat=v+(nA-0.5)*(0.012+0.026*b0)+(nB-0.5)*0.008;
+          let belt=prof(llat);
+          belt=Math.max(0,Math.min(1,belt+(nB-0.5)*0.22*(0.35+belt)));          // turbulent belt/zone mixing
+          // base colour: bright zone -> rust belt -> darker belt core
+          let col=mix(ZONE,BELT,Math.min(1,belt*1.25));
+          if(belt>0.55)col=mix(col,CORE,(belt-0.55)*1.4*(0.5+(nB-0.5)));
+          // festoons: blue-grey wisps drawn from the NEB's south edge into the bright Equatorial Zone
+          if(v>0.43&&v<0.50){const fs=Math.max(0,fbm(u*9.0+3.0,v*40.0)-0.55)*3.2*(1-(v-0.43)/0.07);col=mix(col,FEST,Math.min(0.55,fs));}
+          // fine zonal streaking + mid turbulence brightness
+          let br=0.92+(nC-0.5)*0.16+(nB-0.5)*0.07;
+          // ---- Great Red Spot: pale hollow + integrated vortex (swirl-sampled internal banding) ----
+          let du=u-GU;if(du>0.5)du-=1;if(du<-0.5)du+=1;
+          const dv2=v-GV,dd=Math.sqrt((du/GRU)*(du/GRU)+(dv2/GRV)*(dv2/GRV));
+          if(dd<1.75){
+            const hollow=Math.max(0,1-Math.abs(dd-1.28)/0.47);                  // bright collar where the SEB flows around the spot
+            col=mix(col,ZONE,hollow*0.75);br+=hollow*0.05;
+            if(dd<1.05){
+              const ang=Math.atan2(dv2/GRV,du/GRU),sw=fbm(ang*1.35+dd*4.6+(1-dd)*2.4+40.0,dd*7.0+40.0); // spiral striations
+              const rim=Math.max(0,1-Math.abs(dd-0.82)/0.30);
+              let sc=mix([186,98,66],[204,124,92],Math.max(0,Math.min(1,0.35+(sw-0.5)*1.3+(1-dd)*0.25))); // salmon core -> brick
+              sc=mix(sc,[150,70,48],rim*0.65);                                 // darker vortex rim
+              const inSpot=Math.max(0,Math.min(1,(1.05-dd)/0.22));
+              col=mix(col,sc,inSpot);br=br*(1-inSpot*0.12)+inSpot*0.02*(sw-0.5);
+            }
+          }
           let R=col[0]*br,G=col[1]*br,B=col[2]*br;
-          const lum=0.3*R+0.59*G+0.11*B;R+=(lum-R)*0.28;G+=(lum-G)*0.28;B+=(lum-B)*0.28;   // desaturate for natural look
-          const pm=1-pf;R=R*(1-pm*0.4)+128*pm*0.4;G=G*(1-pm*0.4)+126*pm*0.4;B=B*(1-pm*0.4)+126*pm*0.4;
-          const pd=0.74+0.26*pf;R*=pd;G*=pd;B*=pd;
+          const lum=0.3*R+0.59*G+0.11*B;R+=(lum-R)*0.16;G+=(lum-G)*0.16;B+=(lum-B)*0.16;   // slight desaturation, photographic
+          // poles: mottled blue-grey hoods, banding fades out
+          const pm=1-pf,pmm=pm*(0.55+0.45*nB);
+          R=R*(1-pmm)+POLE[0]*pmm;G=G*(1-pmm)+POLE[1]*pmm;B=B*(1-pmm)+POLE[2]*pmm;
+          const pd=0.78+0.22*pf;R*=pd;G*=pd;B*=pd;
           const i4=(y*w+xx)*4;D[i4]=R;D[i4+1]=G;D[i4+2]=B;D[i4+3]=255;
         }}
       x.putImageData(img,0,0);
-      // Great Red Spot — soft turbulent oval blended into the bands (no drawn rings)
-      const gx=w*0.66,gy=h*0.64,rx=74,ry=42;x.save();x.translate(gx,gy);x.rotate(-0.05);
-      const rg=x.createRadialGradient(0,-3,3,0,0,rx);rg.addColorStop(0,'rgba(196,104,78,0.78)');rg.addColorStop(.5,'rgba(166,80,58,0.55)');rg.addColorStop(.82,'rgba(140,66,48,0.28)');rg.addColorStop(1,'rgba(140,66,48,0)');x.fillStyle=rg;x.beginPath();x.ellipse(0,0,rx,ry,0,0,7);x.fill();
-      x.globalAlpha=0.35;x.fillStyle='rgba(120,58,44,0.5)';x.beginPath();x.ellipse(6,4,rx*0.7,ry*0.7,0,0,7);x.fill();x.globalAlpha=1;x.restore();
-      // faint white storm ovals
-      for(let i=0;i<5;i++){const ox=Math.random()*w,oy=h*(0.7+Math.random()*0.14);x.fillStyle='rgba(238,232,219,0.3)';x.beginPath();x.ellipse(ox,oy,8+Math.random()*8,3.5+Math.random()*2.5,0,0,7);x.fill();}
+      // brown barges: elongated dark cyclones embedded in the NEB (deterministic)
+      [[0.18,0.398,26,5],[0.47,0.404,20,4],[0.86,0.396,23,4.5]].forEach(function(o){
+        x.fillStyle='rgba(96,58,40,0.42)';x.beginPath();x.ellipse(o[0]*w,o[1]*h,o[2],o[3],0,0,7);x.fill();});
+      // white ovals: small pale anticyclones with a faint dark rim, along the STB (deterministic)
+      [[0.09,0.700,9],[0.30,0.706,7],[0.55,0.698,8],[0.78,0.703,6.5]].forEach(function(o){
+        x.strokeStyle='rgba(110,84,64,0.30)';x.lineWidth=1.6;x.beginPath();x.ellipse(o[0]*w,o[1]*h,o[2]+1.2,o[2]*0.5+1,0,0,7);x.stroke();
+        x.fillStyle='rgba(240,235,224,0.55)';x.beginPath();x.ellipse(o[0]*w,o[1]*h,o[2],o[2]*0.5,0,0,7);x.fill();});
       const t=new THREE.CanvasTexture(cv2);try{t.anisotropy=renderer.capabilities.getMaxAnisotropy();}catch(e){}return t;
     }
     const JTEX=jupiterTex(),JR=160;JTEX.encoding=THREE.sRGBEncoding;
-    const jupiter=new THREE.Mesh(new THREE.SphereGeometry(JR,84,56),new THREE.MeshStandardMaterial({map:JTEX,bumpMap:JTEX,bumpScale:0.9,roughness:1,metalness:0}));
+    const jupiter=new THREE.Mesh(new THREE.SphereGeometry(JR,84,56),new THREE.MeshStandardMaterial({map:JTEX,bumpMap:JTEX,bumpScale:0.35,roughness:1,metalness:0}));
     jupiter.position.set(330,-26,-80);jupiter.rotation.z=0.05;scene.add(jupiter);
     jupiter.material.onBeforeCompile=function(sh){sh.fragmentShader=sh.fragmentShader.replace('#include <dithering_fragment>','float _mu=clamp(dot(normalize(vNormal),normalize(vViewPosition)),0.0,1.0);gl_FragColor.rgb*=mix(0.70,1.0,pow(_mu,0.55));\n#include <dithering_fragment>');};   // gentle limb darkening
 
